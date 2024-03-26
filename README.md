@@ -41,7 +41,7 @@ npm install
 
 ```bash
 cd KMP-Pharmacy/client
-npm  run  dev
+npm run dev
 
 cd KMP-Pharmacy/server
 npm run dev
