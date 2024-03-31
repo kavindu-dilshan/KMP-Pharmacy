@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import SideBar from '../../components/SideBar';
 
 export default function PromotionCreateForm() {
     const [value, setValue] = useState({
@@ -39,8 +40,9 @@ export default function PromotionCreateForm() {
     };
 
     return (
-        <div>
-            <div>
+        <div className='flex'>
+            <SideBar />
+            <div className='flex-1'>
                 <div className='bg-paleblue justify-between flex px-10 py-8'>
                     <h1 className='text-4xl font-bold text-blue'>Add New Coupon</h1>
                     <div className='flex gap-2'>
@@ -53,55 +55,56 @@ export default function PromotionCreateForm() {
                         </div>
                     </div>
                 </div>
+                <div className='p-10 bg-paleblue m-10 rounded-3xl max-w-4xl border-2 border-light-blue'>
+                    <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
+                        <div className='flex flex-col gap-1 flex-1'>
+                            <label className='font-semibold text-black'>Promotion ID</label>
+                            <input type="text" placeholder='Enter promotion ID' id="promotionID" name="promotionID" value={value.promotionID} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+
+                            <label className='font-semibold text-black'>Coupon Code</label>
+                            <input type="text" placeholder='Enter coupon code' id="couponCode" name="couponCode" value={value.couponCode} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+
+                            <label className='font-semibold text-black'>Coupon Price</label>
+                            <input type="text" placeholder='Enter coupon price' id="couponPrice" name="couponPrice" value={value.couponPrice} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+
+                            <label className='font-semibold text-black'>Total Amount</label>
+                            <input type="text" placeholder='Enter total amount' id="totalAmount" name="totalAmount" value={value.totalAmount} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+
+                            <label className='font-semibold text-black'>Description</label>
+                            <textarea type="textarea" placeholder='Enter description' id="description" name="description" value={value.description} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 max-h-40 min-h-40' required/>
+
+                            <input type="submit" value="Submit" className='bg-light-blue hover:bg-blue font-semibold text-white p-3 rounded-lg w-full cursor-pointer'/>
+                        </div>
+
+                        <div className='flex flex-col gap-1 flex-1'>
+                            <label className='font-semibold text-black'>Type</label>
+                            <select id="type" name="type" value={value.type} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required>
+                                <option value="Seasonal">Seasonal</option>
+                                <option value="Special">Special</option>
+                            </select>
+
+                            <label className='font-semibold text-black'>Created Date</label>
+                            <input type="date" id="createdAt" name="createdAt" value={value.createdAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+
+                            <label className='font-semibold text-black'>Expiry Date</label>
+                            <input type="date" id="expiredAt" name="expiredAt" value={value.expiredAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            
+                            <label className='font-semibold text-black'>Status</label>
+                            <div className='flex gap-6 flex-wrap'>
+                                <div className='flex gap-2'>
+                                    <input onChange={handleChange} checked={value.status === 'Active'} type="checkbox" name="status" id="Active" className='w-5'/>
+                                    <span>Active</span>
+                                </div>
+                                <div className='flex gap-2'>
+                                    <input onChange={handleChange} checked={value.status === 'Inactive'} type="checkbox" name="status" id="Inactive" className='w-5'/>
+                                    <span>Inactive</span>
+                                </div>
+                            </div>  
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div className='p-10 bg-paleblue m-10 rounded-3xl max-w-4xl border-2 border-light-blue'>
-            <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
-                <div className='flex flex-col gap-1 flex-1'>
-                    <label className='font-semibold text-black'>Promotion ID</label>
-                    <input type="text" placeholder='Enter promotion ID' id="promotionID" name="promotionID" value={value.promotionID} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
-
-                    <label className='font-semibold text-black'>Coupon Code</label>
-                    <input type="text" placeholder='Enter coupon code' id="couponCode" name="couponCode" value={value.couponCode} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
-
-                    <label className='font-semibold text-black'>Coupon Price</label>
-                    <input type="text" placeholder='Enter coupon price' id="couponPrice" name="couponPrice" value={value.couponPrice} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
-
-                    <label className='font-semibold text-black'>Total Amount</label>
-                    <input type="text" placeholder='Enter total amount' id="totalAmount" name="totalAmount" value={value.totalAmount} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
-
-                    <label className='font-semibold text-black'>Description</label>
-                    <textarea type="textarea" placeholder='Enter description' id="description" name="description" value={value.description} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 max-h-40 min-h-40' required/>
-
-                    <input type="submit" value="Submit" className='bg-light-blue hover:bg-blue font-semibold text-white p-3 rounded-lg w-full cursor-pointer'/>
-                </div>
-
-                <div className='flex flex-col gap-1 flex-1'>
-                    <label className='font-semibold text-black'>Type</label>
-                    <select id="type" name="type" value={value.type} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required>
-                        <option value="Seasonal">Seasonal</option>
-                        <option value="Special">Special</option>
-                    </select>
-
-                    <label className='font-semibold text-black'>Created Date</label>
-                    <input type="date" id="createdAt" name="createdAt" value={value.createdAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
-
-                    <label className='font-semibold text-black'>Expiry Date</label>
-                    <input type="date" id="expiredAt" name="expiredAt" value={value.expiredAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
-                    
-                    <label className='font-semibold text-black'>Status</label>
-                    <div className='flex gap-6 flex-wrap'>
-                        <div className='flex gap-2'>
-                            <input onChange={handleChange} checked={value.status === 'Active'} type="checkbox" name="status" id="Active" className='w-5'/>
-                            <span>Active</span>
-                        </div>
-                        <div className='flex gap-2'>
-                            <input onChange={handleChange} checked={value.status === 'Inactive'} type="checkbox" name="status" id="Inactive" className='w-5'/>
-                            <span>Inactive</span>
-                        </div>
-                    </div>  
-                </div>
-            </form>
-        </div>
+            
         </div>
     );
 }

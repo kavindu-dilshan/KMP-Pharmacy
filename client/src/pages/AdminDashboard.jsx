@@ -3,8 +3,11 @@ import SideBar from '../components/SideBar';
 
 export default function AdminDashboard() {
     return (
-    <Router>
-        <SideBar />
-    </Router>
+        <div className='flex'>
+            <SideBar />
+            <div className='flex flex-col justify-center items-center w-full'>
+                <h1 className='text-5xl font-bold text-dark-blue'>Welcome to Admin Dashboard</h1>
+            </div>
+        </div>
     )
 }

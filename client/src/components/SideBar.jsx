@@ -63,13 +63,6 @@ export default function SideBar() {
           ))}
         </ul>
       </div>
-      <div className='w-full'>
-        <Routes>
-          <Route path='/promotions' element={<PromotionManagement />} />
-          <Route path='/create-promotion' element={<PromotionCreateForm />} />
-          <Route path='/update-promotion/:id' element={<PromotionUpdateForm />} />
-        </Routes>
-      </div>
     </div>
   )
 }
