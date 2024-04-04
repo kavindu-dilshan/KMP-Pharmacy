@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import SideBar from '../../components/SideBar';
 
 export default function PromotionCreateForm() {
+    const navigate = useNavigate();
     const [value, setValue] = useState({
         promotionID: '',
         couponCode: '',
         couponPrice: '',
         totalAmount: '',
-        type: '',
+        type: 'Seasonal',
         createdAt: '',
         expiredAt: '',
-        status: '',
+        status: 'Active',
         description: ''
     });
 
@@ -31,6 +33,9 @@ export default function PromotionCreateForm() {
             const response = addPromotion.data;
             if (response.success) {
                 toast.success(response.message, {duration: 4000});
+                setTimeout(() => {
+                    navigate('/promotion-management');
+                });
             }
             console.log(response);
         } catch (error) {

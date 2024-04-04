@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-function PromotionTable( props ) {
+function PromotionTable() {
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -18,8 +18,21 @@ function PromotionTable( props ) {
         try {
             const fetchPromotion = await axios.get('http://localhost:3000/api/read');
             const response = fetchPromotion.data;
+            const updatedPromotions = response.promotion.map(promo => {
+                if (new Date(promo.expiredAt) < new Date()) {
+                    promo.status = 'Inactive';
+                    axios.put(`http://localhost:3000/api/update/${promo._id}`, { status: 'Inactive' })
+                    .then(response => {
+                        console.log('Promotion status updated:', response);
+                    })
+                    .catch(error => {
+                        console.error('Error updating promotion status:', error);
+                    });
+                }
+                return promo;
+            });
             setData(response);
-            setSearchResults(response.promotion || []);
+            setSearchResults(updatedPromotions);
         } catch (error) {
             console.log(error);
         }
@@ -54,8 +67,10 @@ function PromotionTable( props ) {
                 promotion: prevState.promotion.filter(promo => promo._id !== deleteId)
             }));
             setDeleteId(null);
-            window.location.reload();
             toast.success('Promotion deleted successfully!');
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         } catch (error) {
             console.log(error);
         }

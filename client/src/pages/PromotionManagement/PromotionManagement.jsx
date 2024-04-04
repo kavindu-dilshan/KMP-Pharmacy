@@ -3,10 +3,13 @@ import PromotionTable from './PromotionTable';
 import { Link } from 'react-router-dom';
 import { MdDownload } from 'react-icons/md';
 import SideBar from '../../components/SideBar';
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 
 export default function PromotionManagement() {
-  const [reportGenerated, setReportGenerated] = useState(false);
   const [promotionsCount, setPromotionsCount] = useState(0);
+  const [activePromotionsCount, setActivePromotionsCount] = useState(0);
+  const [inactivePromotionsCount, setInactivePromotionsCount] = useState(0);
 
   useEffect(() => {
     fetchPromotions();
@@ -14,20 +17,34 @@ export default function PromotionManagement() {
 
   const fetchPromotions = () => {
     fetch('http://localhost:3000/api/read')
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        console.error('Failed to fetch promotions:', response.statusText);
-        throw new Error('Failed to fetch promotions');
-      }})
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.error('Failed to fetch promotions:', response.statusText);
+          throw new Error('Failed to fetch promotions');
+        }
+      })
       .then(data => {
-        setPromotionsCount(data.promotion.length);
+        const promotions = data.promotion;
+        setPromotionsCount(promotions.length);
+  
+        const activePromotions = promotions.filter(promotion => promotion.status === 'Active');
+        const inactivePromotions = promotions.filter(promotion => promotion.status === 'Inactive');
+  
+        setActivePromotionsCount(activePromotions.length);
+        setInactivePromotionsCount(inactivePromotions.length);
       })
       .catch(error => {
         console.error('Error fetching promotions:', error);
       });
   };
+
+  const formatDate = (datetimeString) => {
+    const date = new Date(datetimeString);
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    return formattedDate;
+};
 
   const generateReport = () => {
     fetch('http://localhost:3000/api/read')
@@ -40,30 +57,35 @@ export default function PromotionManagement() {
         }
       })
       .then(data => {
-        let csvContent = "Promotion ID,Coupon Code,Coupon Price,Total Amount,Type,Created At,Expired At,Status,Description\n";
-        data.promotion.forEach(promo => {
-          csvContent += `${promo.promotionID},${promo.couponCode},${promo.couponPrice},${promo.totalAmount},${promo.type},${promo.createdAt},${promo.expiredAt},${promo.status},${promo.description}\n`;
+        const promotions = data.promotion;
+
+        const doc = new jsPDF();
+
+        const tableHeader = [['Promotion ID', 'Coupon Code', 'Coupon Price', 'Total Amount', 'Type', 'Created At', 'Expired At', 'Status']];
+
+        const tableData = promotions.map(promotion => [
+          promotion.promotionID,
+          promotion.couponCode,
+          promotion.couponPrice,
+          promotion.totalAmount,
+          promotion.type,
+          formatDate(promotion.createdAt),
+          formatDate(promotion.expiredAt),
+          promotion.status
+        ]);
+
+        doc.autoTable({
+          head: tableHeader,
+          body: tableData,
         });
-  
-        const blob = new Blob([csvContent], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
 
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Promotion Management Report.csv';
-        document.body.appendChild(a);
-
-        a.click();
-
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-
-        setReportGenerated(true);
+        doc.save('Promotion Management Report.pdf');
       })
       .catch(error => {
         console.error('Error generating report:', error);
       });
   };
+  
 
   return (
     <div className='flex'>
@@ -94,15 +116,15 @@ export default function PromotionManagement() {
           <div className='flex gap-4'>
             <div className='bg-lighter-blue border-2 border-light-blue font-medium rounded-2xl w-fit px-14 p-8'>
               <p className='text-center text-lg'>Total Offers</p>
-              <p className='text-center text-3xl font-bold'>10</p>
+              <p className='text-center text-3xl font-bold'>{promotionsCount}</p>
             </div>
             <div className='bg-green-100 border-2 border-green-600 font-medium rounded-2xl w-fit px-14 p-8'>
               <p className='text-center text-lg'>Active Offers</p>
-              <p className='text-center text-3xl font-bold'>10</p>
+              <p className='text-center text-3xl font-bold'>{activePromotionsCount}</p>
             </div>
             <div className='bg-red-100 border-2 border-red-600 font-medium rounded-2xl w-fit px-14 p-8'>
               <p className='text-center text-lg'>Inactive Offers</p>
-              <p className='text-center text-3xl font-bold'>10</p>
+              <p className='text-center text-3xl font-bold'>{inactivePromotionsCount}</p>
             </div>
           </div>
           <div className='flex flex-col gap-2 mr-10 text-sm text-center'>
