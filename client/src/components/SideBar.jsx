@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { Link, Routes, Route } from 'react-router-dom' 
+import { Link } from 'react-router-dom' 
 import logo from '../assets/Logo.svg'
-import PromotionManagement from '../pages/PromotionManagement/PromotionManagement';
-import PromotionCreateForm from '../pages/PromotionManagement/PromotionCreateForm';
-import PromotionUpdateForm from '../pages/PromotionManagement/PromotionUpdateForm';
 import { Toaster } from 'react-hot-toast';
 import { FaRegUser, FaBoxesStacked } from 'react-icons/fa6';
 import { FiTruck } from 'react-icons/fi';
@@ -22,10 +19,10 @@ export default function SideBar() {
     { title: "Delivery Management", icon: <FiTruck /> },
     { title: "Inventory Management", icon: <MdOutlineInventory /> },
     { title: "Supplier Management", icon: <FaBoxesStacked />},
-    { title: "Promotion Management", icon: <TbDiscount2 />, path: '/promotions', submenu: true,
+    { title: "Promotion Management", icon: <TbDiscount2 />, path: '/promotion-management', submenu: true,
     submenuItems: [
       { title: "Create Promotions", path: '/create-promotion'},
-      { title: "Promotions Table", path: '/promotions' },
+      { title: "Promotions Table", path: '/promotion-management' },
       { title: "Manage Feedbacks", path: '/feedbacks'},
     ],
   },

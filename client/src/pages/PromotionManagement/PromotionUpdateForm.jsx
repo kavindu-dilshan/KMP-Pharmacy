@@ -56,9 +56,11 @@ export default function PromotionUpdateForm() {
         e.preventDefault();
 
         axios.put(`http://localhost:3000/api/update/${id}`, promotionData)
-        .then(response => {
+        .then(() => {
             toast.success('Promotion updated successfully!');
-            navigate('/promotions')
+            setTimeout(() => {
+                navigate('/promotion-management');
+            });
         })
         .catch(error => {
             toast.error('Promotion update failed!');
