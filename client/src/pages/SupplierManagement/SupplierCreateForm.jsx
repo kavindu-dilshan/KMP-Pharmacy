@@ -82,14 +82,14 @@ export default function SupplierCreateForm() {
 
                         <div className='flex flex-col gap-1 flex-1'>
                         <label className='font-semibold text-black'>Email</label>
-                            <textarea type="textarea" placeholder='Enter Email' id="email" name="email" value={value.email} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <input type="text" placeholder='Enter Email' id="email" name="email" value={value.email} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
 
                             <label className='font-semibold text-black'>Date of Birth</label>
                             <input type="date" id="DOB" name="DOB" value={value.DOB} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
                             
                             <label className='font-semibold text-black'>NIC</label>
-                            <textarea type="text" placeholder='Enter NIC' id="NIC" name="NIC" value={value.NIC} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <input type="text" placeholder='Enter NIC' id="NIC" name="NIC" value={value.NIC} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
                         </div>
                     </form>
