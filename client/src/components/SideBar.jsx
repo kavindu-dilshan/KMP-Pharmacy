@@ -13,12 +13,18 @@ import { BsChevronDown} from "react-icons/bs";
 import { RiDashboardFill } from "react-icons/ri";
 
 export default function SideBar() {
-  const [subMenuOpen, setSubMenuOpen] = useState(false);
+  const [subMenuOpen, setSubMenuOpen] = useState({});
   const Menus = [
     { title: "User Management", icon: <FaRegUser /> },
     { title: "Delivery Management", icon: <FiTruck /> },
     { title: "Inventory Management", icon: <MdOutlineInventory /> },
-    { title: "Supplier Management", icon: <FaBoxesStacked />},
+    { title: "Supplier Management", icon: <FaBoxesStacked />, path: '/supplier-management', submenu: true,
+    submenuItems: [
+      {title: "Create Suppliers", path: '/create-supplier'},
+      {title: "Supplier Table", path: '/supplier-management'},
+      {title: "Orders", path: '/orders'},
+    ],
+  },
     { title: "Promotion Management", icon: <TbDiscount2 />, path: '/promotion-management', submenu: true,
     submenuItems: [
       { title: "Create Promotions", path: '/create-promotion'},
@@ -30,6 +36,13 @@ export default function SideBar() {
     { title: "Employee Management", icon: <GrUserWorker /> },
     { title: "Payment Management", icon: <BiDollarCircle /> },
   ];
+
+  const toggleSubMenu = (index) => {
+    setSubMenuOpen((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
+  };
 
   return (
     <div className='flex'>
@@ -43,18 +56,19 @@ export default function SideBar() {
               <span className='text-2xl block float-left'>{menu.icon ? menu.icon : <RiDashboardFill />}</span>
               <Link to={menu.path} className='text-base font-medium flex-1'>{menu.title}</Link>
               {menu.submenu && (
-                <BsChevronDown className={`${subMenuOpen && "rotate-180"}`} onClick={() =>
-                  setSubMenuOpen(!subMenuOpen)}/>
-              )}
+                  <BsChevronDown className={`${subMenuOpen[index] ? 'rotate-180' : ''}`} onClick={() => toggleSubMenu(index)} />
+                  )}
             </li>
-            {menu.submenu && subMenuOpen && (
-              <ul>
-                {menu.submenuItems.map((submenuItem, index) => (
-                  <li key={index} className='text-paleblue text-sm flex items-center gap-x-4 cursor-pointer p-2 px-5 hover:bg-light-white rounded-md'>
-                    <Link to={submenuItem.path} className='flex-1'>{submenuItem.title}</Link>
-                  </li>
-                ))}
-              </ul>
+            {menu.submenu && subMenuOpen[index] && (
+            <ul>
+              {menu.submenuItems.map((submenuItem, subIndex) => (
+              <li key={subIndex} className="text-paleblue text-sm flex items-center gap-x-4 cursor-pointer p-2 px-5 hover:bg-light-white rounded-md" >
+                <Link to={submenuItem.path} className="flex-1">
+                  {submenuItem.title}
+                </Link>
+              </li>
+              ))}
+            </ul>
             )}
             </React.Fragment>
           ))}
