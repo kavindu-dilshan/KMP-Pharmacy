@@ -39,6 +39,6 @@ const inventorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Inventory = mongoose.model('Listing', inventorySchema);  //Create model
+const Inventory = mongoose.model('Inventory', inventorySchema);  //Create model
 
 export default Inventory;

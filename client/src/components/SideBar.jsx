@@ -17,7 +17,13 @@ export default function SideBar() {
   const Menus = [
     { title: "User Management", icon: <FaRegUser /> },
     { title: "Delivery Management", icon: <FiTruck /> },
-    { title: "Inventory Management", icon: <MdOutlineInventory /> },
+    { title: "Inventory Management", icon: <MdOutlineInventory />, path: '/supplier-management', submenu: true,
+    submenuItems: [
+      {title: "Create Suppliers", path: '/create-supplier'},
+      {title: "Supplier Table", path: '/supplier-management'},
+      {title: "Orders", path: '/orders'},
+    ],
+  },
     { title: "Supplier Management", icon: <FaBoxesStacked />, path: '/supplier-management', submenu: true,
     submenuItems: [
       {title: "Create Suppliers", path: '/create-supplier'},
