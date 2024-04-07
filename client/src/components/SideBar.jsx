@@ -19,9 +19,9 @@ export default function SideBar() {
     { title: "Delivery Management", icon: <FiTruck /> },
     { title: "Inventory Management", icon: <MdOutlineInventory />, path: '/supplier-management', submenu: true,
     submenuItems: [
-      {title: "Create Suppliers", path: '/create-supplier'},
-      {title: "Supplier Table", path: '/supplier-management'},
-      {title: "Orders", path: '/orders'},
+      {title: "Enter new Item", path: '/create-supplier'},
+      {title: "Inventory", path: '/supplier-management'},
+      {title: "Enter new Supply orders", path: '/orders'},
     ],
   },
     { title: "Supplier Management", icon: <FaBoxesStacked />, path: '/supplier-management', submenu: true,
@@ -54,7 +54,9 @@ export default function SideBar() {
     <div className='flex'>
       <Toaster />
       <div className='bg-dark-blue min-h-screen p-5 pt-8 min-w-max'>
-        <img src={logo} alt="logo" className='mx-auto' />
+        <Link to="/">
+          <img src={logo} alt="logo" className='mx-auto' />
+        </Link>
         <ul className='pt-10'>
           {Menus.map((menu, index) =>(
             <React.Fragment key={index}>
