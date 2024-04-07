@@ -18,7 +18,13 @@ export default function SideBar() {
     { title: "User Management", icon: <FaRegUser /> },
     { title: "Delivery Management", icon: <FiTruck /> },
     { title: "Inventory Management", icon: <MdOutlineInventory /> },
-    { title: "Supplier Management", icon: <FaBoxesStacked />},
+    { title: "Supplier Management", icon: <FaBoxesStacked />, path: '/supply-management', submenu: true,
+    submenuItems: [
+      {title: "Create Suppliers", path: '/create-supplier'},
+      {title: "Supplier Table", path: '/supply-management'},
+      {title: "Orders", path: '/orders'},
+    ],
+  },
     { title: "Promotion Management", icon: <TbDiscount2 />, path: '/promotion-management', submenu: true,
     submenuItems: [
       { title: "Create Promotions", path: '/create-promotion'},
