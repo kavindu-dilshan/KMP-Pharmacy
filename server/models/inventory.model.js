@@ -16,6 +16,12 @@ const inventorySchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+
+    supplier: {
+      type: String,
+      required: true,
+    },
+
     expirationDate: {
         type:Date,
         required: true,

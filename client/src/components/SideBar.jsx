@@ -19,7 +19,7 @@ export default function SideBar() {
     { title: "Delivery Management", icon: <FiTruck /> },
     { title: "Inventory Management", icon: <MdOutlineInventory />, path: '/supplier-management', submenu: true,
     submenuItems: [
-      {title: "Enter new Item", path: '/create-supplier'},
+      {title: "Enter new Item", path: '/create-inventory'},
       {title: "Inventory", path: '/supplier-management'},
       {title: "Enter new Supply orders", path: '/orders'},
     ],

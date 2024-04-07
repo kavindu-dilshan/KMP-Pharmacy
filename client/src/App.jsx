@@ -10,6 +10,7 @@ import SupplyManagement from './pages/SupplierManagement/SupplyManagement';
 import SupplierCreateForm from './pages/SupplierManagement/SupplierCreateForm';
 import Orders from './pages/SupplierManagement/Orders';
 import SupplierUpdateForm from './pages/SupplierManagement/SupplierUpdateForm';
+import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreateForm';
 
 export default function App() {
   return (
@@ -25,7 +26,10 @@ export default function App() {
       <Route path="/supplier-management" element={<SupplyManagement/>} />
       <Route path="/create-supplier" element={<SupplierCreateForm/>} />
       <Route path='/update-supplier/:id' element={<SupplierUpdateForm />} />     
-      <Route path="/orders" element={<Orders/>} /></Routes>
+      <Route path="/orders" element={<Orders/>} />
+      <Route path="/create-inventory" element={<InventoryCreateForm/>} />
+      
+      </Routes>
   </Router>
   )
 }
