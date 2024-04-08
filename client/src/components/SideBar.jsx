@@ -17,11 +17,11 @@ export default function SideBar() {
   const Menus = [
     { title: "User Management", icon: <FaRegUser /> },
     { title: "Delivery Management", icon: <FiTruck /> },
-    { title: "Inventory Management", icon: <MdOutlineInventory />, path: '/supplier-management', submenu: true,
+    { title: "Inventory Management", icon: <MdOutlineInventory />, path: '/inventory-management', submenu: true,
     submenuItems: [
       {title: "Enter new Item", path: '/create-inventory'},
-      {title: "Inventory", path: '/supplier-management'},
-      {title: "Enter new Supply orders", path: '/orders'},
+      {title: "Inventory", path: '/inventory-management'},
+      {title: "Enter new Supply orders", path: '/supply-request'},
     ],
   },
     { title: "Supplier Management", icon: <FaBoxesStacked />, path: '/supplier-management', submenu: true,

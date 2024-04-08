@@ -48,7 +48,7 @@ export default function PromotionCreateForm() {
             if (response.success) {
                 toast.success(response.message, { duration: 2000 });
                 setTimeout(() => {
-                    navigate('/');
+                    navigate('/inventory-management');
                 }, 1000);
             }           
             console.log(response);
