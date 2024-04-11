@@ -17,11 +17,11 @@ const addSupplier = async (req, res) => {
 
 const getSupplier = async(req, res) => {
     try {
-        const Supplier = await Supplier.find()
-        if(!Supplier) {
+        const supplier = await Supplier.find()
+        if(!supplier) {
             return res.status(404).json({success:false, message:'Supplier not found!'})
         }
-        res.status(200).json({success:true, Supplier})
+        res.status(200).json({success:true, supplier})
     } catch (error) {
         console.log(error);
         return res.status(500).json({success:false, message:'Internal Server Error'})

@@ -28,12 +28,12 @@ export default function SupplierCreateForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const addSupplier = await axios.post('http://localhost:3000/api/create', value);
+            const addSupplier = await axios.post('http://localhost:3000/api/supplier/create', value);
             const response = addSupplier.data;
             if (response.success) {
                 toast.success(response.message, {duration: 4000});
                 setTimeout(() => {
-                    navigate('/Supplier-management');
+                    navigate('/supplier-management');
                 });
             }
             console.log(response);
