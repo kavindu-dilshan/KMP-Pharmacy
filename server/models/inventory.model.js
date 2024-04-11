@@ -16,6 +16,12 @@ const inventorySchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+
+    supplier: {
+      type: String,
+      required: true,
+    },
+
     expirationDate: {
         type:Date,
         required: true,
@@ -39,6 +45,6 @@ const inventorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Inventory = mongoose.model('Listing', inventorySchema);  //Create model
+const Inventory = mongoose.model('Inventory', inventorySchema);  //Create model
 
 export default Inventory;
