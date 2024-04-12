@@ -17,6 +17,7 @@ import InventoryManagement from './pages/InventoryManagement/InventoryManagement
 import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
 import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
 import PrescriptionNotification from './pages/PrescriptionManagement/PrescriptionNotifications';
+import PrescriptionManagement from './pages/PrescriptionManagement/PrescriptionManagement';
 
 export default function App() {
   return (
@@ -35,7 +36,8 @@ export default function App() {
       <Route path="/orders" element={<Orders/>} />
       
       <Route path="/create-prescription" element={<PrescriptionCreateForm/>} />
-      <Route path="/prescription-management" element={<PrescriptionAssign/>} />
+      <Route path="/prescription-management" element={<PrescriptionManagement/>} />
+      <Route path="/prescription-assign" element={<PrescriptionAssign/>} />
       <Route path="/notifications" element={<PrescriptionNotification/>} />
 
       <Route path="/inventory-management" element={<InventoryManagement/>} />

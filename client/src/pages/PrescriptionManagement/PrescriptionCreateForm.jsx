@@ -72,7 +72,7 @@ export default function PrescriptionCreateForm() {
                             <input type="text" placeholder='Enter Last Name' id="lastName" name="lastName" value={value.lastname} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Age</label>
-                            <textarea type="text" placeholder='Enter Age' id="age" name="age" value={value.age} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <input type="text" placeholder='Enter Age' id="age" name="age" value={value.age} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
                             <label className='font-semibold text-black'>Contact Number</label>
                             <input type="text" placeholder='Enter Contact Number' id="contactNumber" name="contactNumber" value={value.contactNumber} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
@@ -90,7 +90,7 @@ export default function PrescriptionCreateForm() {
                             <input type="text" placeholder='Enter unites' id="unites" name="unites" value={value.units} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
                             
                             <label className='font-semibold text-black'>Notes</label>
-                            <input type="textarea" placeholder='Enter notes' id="notes" name="notes" value={value.notes} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <textarea type="textarea" placeholder='Enter notes' id="notes" name="notes" value={value.notes} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
                         </div>
                     </form>

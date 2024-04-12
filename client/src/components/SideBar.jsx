@@ -42,7 +42,7 @@ export default function SideBar() {
     { title: "Prescription Management", icon: <LiaFilePrescriptionSolid />,path: '/prescription-management', submenu: true,
     submenuItems: [
       { title: "Prescription form", path: '/create-prescription'},
-      { title: "Assign page of Employees", path: '/prescription-management' },
+      { title: "Assign page of Employees", path: '/prescription-assign' },
       { title: "Notifications", path: '/notifications'},
     ],
   },
