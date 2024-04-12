@@ -14,6 +14,9 @@ import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreate
 import InventoryUpdateForm from './pages/InventoryManagement/InventoryUpdateForm';
 import SupplyRequestForm from './pages/InventoryManagement/SupplyRequest';
 import InventoryManagement from './pages/InventoryManagement/InventoryManagement';
+import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
+import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
+import PrescriptionNotification from './pages/PrescriptionManagement/PrescriptionNotifications';
 
 export default function App() {
   return (
@@ -30,6 +33,10 @@ export default function App() {
       <Route path="/create-supplier" element={<SupplierCreateForm/>} />
       <Route path='/update-supplier/:id' element={<SupplierUpdateForm />} />     
       <Route path="/orders" element={<Orders/>} />
+      
+      <Route path="/create-prescription" element={<PrescriptionCreateForm/>} />
+      <Route path="/prescription-management" element={<PrescriptionAssign/>} />
+      <Route path="/notifications" element={<PrescriptionNotification/>} />
 
       <Route path="/inventory-management" element={<InventoryManagement/>} />
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
