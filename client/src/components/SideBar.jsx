@@ -11,6 +11,7 @@ import { GrUserWorker } from "react-icons/gr";
 import { BiDollarCircle } from "react-icons/bi";
 import { BsChevronDown} from "react-icons/bs";
 import { RiDashboardFill } from "react-icons/ri";
+import SupplierTable from './../pages/SupplierManagement/SupplierTable';
 
 export default function SideBar() {
   const [subMenuOpen, setSubMenuOpen] = useState({});
