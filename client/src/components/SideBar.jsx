@@ -39,7 +39,13 @@ export default function SideBar() {
       { title: "Manage Feedbacks", path: '/feedbacks'},
     ],
   },
-    { title: "Prescription Management", icon: <LiaFilePrescriptionSolid /> },
+    { title: "Prescription Management", icon: <LiaFilePrescriptionSolid />,path: '/prescription-management', submenu: true,
+    submenuItems: [
+      { title: "Prescription form", path: '/create-prescription'},
+      { title: "Assign page of Employees", path: '/prescription-assign' },
+      { title: "Notifications", path: '/notifications'},
+    ],
+  },
     { title: "Employee Management", icon: <GrUserWorker /> },
     { title: "Payment Management", icon: <BiDollarCircle /> },
   ];
