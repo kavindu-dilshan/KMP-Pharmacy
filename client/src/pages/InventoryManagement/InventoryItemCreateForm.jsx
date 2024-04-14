@@ -14,7 +14,8 @@ export default function PromotionCreateForm() {
         type: 'Capsule',
         manuAt: '',
         expirAt: '',
-        storageCondition: ''
+        storageCondition: '',
+        status: 'Active'
     });
     const [error, setError] = useState('');
 
@@ -31,6 +32,8 @@ export default function PromotionCreateForm() {
             } else {
                 setError(''); // Clear any previous error
             }
+        } else if (name === 'status') {
+            parsedValue = 'Active';
         }
 
         setValue(prevState => ({
@@ -65,7 +68,7 @@ export default function PromotionCreateForm() {
                 <div className='bg-paleblue justify-between flex px-10 py-8'>
                     <h1 className='text-4xl font-bold text-blue'>Add new Inventory Item</h1>
                     <div className='flex gap-2'>
-                        <img className='w-12 h-12 border-2 border-white rounded-full' src="https://avatars.githubusercontent.com/u/127751216?…00&u=f53b685eb62a23a72baeda2f44a671c04b804c86&v=4" alt="tania andrew" />
+                        <img className='w-12 h-12 border-2 border-white rounded-full' src="https://avatars.githubusercontent.com/u/127751216?…00&u=f53b685eb62a23a72baeda2f44a671c04b804c86&v=4" alt="triss merigold" />
                         <div className="flex w-full flex-col gap-0.5">
                             <div className="flex items-center justify-between font-bold">
                                 <h1>Kavindu Dasanayaka</h1>
@@ -78,21 +81,21 @@ export default function PromotionCreateForm() {
                     <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
                         <div className='flex flex-col gap-1 flex-1'>
                             <label className='font-semibold text-black'>Medicine Name</label>
-                            <input type="text" placeholder='Enter Medicine Name' id="Mname" name="medicineName" value={value.promotionID} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="text" placeholder='Enter Medicine Name' id="Mname" name="Mname" value={value.Mname} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Unit Price</label>
-                            <input type="Number" placeholder='Enter Unit price' id="Mprice" name="unitPrice" value={value.couponCode} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="Number" placeholder='Enter Unit price' id="Mprice" name="Mprice" value={value.Mprice} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
                             {error && <span className="text-red-500">{error}</span>}
 
                             <label className='font-semibold text-black'>Quantity</label>
-                            <input type="Number" placeholder='Enter Quantity' id="Mquantity" name="quantity" value={value.couponPrice} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="Number" placeholder='Enter Quantity' id="Mquantity" name="Mquantity" value={value.Mquantity} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
                             {error && <span className="text-red-500">{error}</span>}
 
                             <label className='font-semibold text-black'>Supplier</label>
-                            <input type="text" placeholder='Enter Supplier name' id="Msupplier" name="supplier" value={value.totalAmount} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="text" placeholder='Enter Supplier name' id="Msupplier" name="Msupplier" value={value.Msupplier} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Store Condition</label>
-                            <textarea type="textarea" placeholder='Enter Optimal storage conditions' id="Mdescription" name="storageCondition" value={value.description} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 max-h-20 min-h-10' required/>
+                            <textarea type="textarea" placeholder='Enter Optimal storage conditions' id="Mdescription" name="storageCondition" value={value.storageCondition} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 max-h-20 min-h-10' required/>
 
                         </div>
 
@@ -107,10 +110,15 @@ export default function PromotionCreateForm() {
                             </select>
 
                             <label className='font-semibold text-black'>manufactures Date</label>
-                            <input type="date" id="manuAt" name="manufacturesDate" value={value.createdAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="date" id="manuAt" name="manuAt" value={value.manuAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Expiration Date</label>
-                            <input type="date" id="expirAt" name="expirationDate" value={value.expiredAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="date" id="expirAt" name="expirAt" value={value.expirAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+
+                            <div className='flex items-center gap-2'>
+                                <label className='font-semibold text-black'>Available</label>
+                                <input type="checkbox" name="status" id="active" checked={value.status === 'Active'} disabled className='w-5'/>
+                            </div>
 
                             <input 
                                 type="submit" 
