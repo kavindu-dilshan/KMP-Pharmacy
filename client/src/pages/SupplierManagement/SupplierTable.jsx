@@ -97,8 +97,8 @@ function SupplierTable() {
             <thead>
                 <tr className="bg-blue text-white text-left">
                     <th className="border border-blue px-4 py-2">Supplier ID</th>
-                    <th className="border border-blue px-4 py-2">First Name</th>
-                    <th className="border border-blue px-4 py-2">Last Name</th>
+                    <th className="border border-blue px-4 py-2">Supplier</th>
+                    <th className="border border-blue px-4 py-2">Conatct Person</th>
                     <th className="border border-blue px-4 py-2">Address</th>
                     <th className="border border-blue px-4 py-2">Contact Number</th>
                     <th className="border border-blue px-4 py-2">Actions</th>
