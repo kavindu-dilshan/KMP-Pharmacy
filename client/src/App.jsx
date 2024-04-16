@@ -18,6 +18,8 @@ import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionC
 import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
 import PrescriptionNotification from './pages/PrescriptionManagement/PrescriptionNotifications';
 import PrescriptionManagement from './pages/PrescriptionManagement/PrescriptionManagement';
+import PrescriptionAssignForm from './pages/PrescriptionManagement/PrescriptionAssignForm';
+import PrescriptionAssignTable from './pages/PrescriptionManagement/PrescriptionAssignTable';
 import DriverCreateForm from './pages/DeliveryManagement/DriverCreateForm';
 import DriverUpdateForm from './pages/DeliveryManagement/DriverUpdateForm';
 import DeliveryTaskcreateForm from './pages/DeliveryManagement/DeliveryTaskcreateForm';
@@ -27,6 +29,7 @@ import DeliveryManagement from './pages/DeliveryManagement/DeliveryManagement';
 import DriverManagement from './pages/DeliveryManagement/DriverManagement';
 import DriverTable from './pages/DeliveryManagement/DriverTable';
 import DriverSignIn from './pages/DeliveryManagement/DriverSignIn';
+import PrescriptionUpdateForm from './pages/PrescriptionManagement/PrescriptionUpdateForm';
 import SignIn from './pages/UserManagement/SignIn';
 import SignUp from './pages/UserManagement/SignUp';
 import Profile from './pages/UserManagement/Profile';
@@ -57,7 +60,10 @@ export default function App() {
       <Route path="/create-prescription" element={<PrescriptionCreateForm/>} />
       <Route path="/prescription-management" element={<PrescriptionManagement/>} />
       <Route path="/prescription-assign" element={<PrescriptionAssign/>} />
+      <Route path="/prescription-assigntable/:id" element={<PrescriptionAssignTable/>} />
       <Route path="/notifications" element={<PrescriptionNotification/>} />
+      <Route path='/update-prescription/:id' element={<PrescriptionUpdateForm />} /> 
+      <Route path='/prescription-assignform/:id' element={<PrescriptionAssignForm />} /> 
 
       <Route path="/inventory-management" element={<InventoryManagement/>} />
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />

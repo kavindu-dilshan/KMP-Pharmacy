@@ -28,7 +28,7 @@ export default function PrescriptionCreateForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const addPrescription = await axios.post('http://localhost:3000/api/create', value);
+            const addPrescription = await axios.post('http://localhost:3000/api/prescription/create', value);
             const response = addPrescription.data;
             if (response.success) {
                 toast.success(response.message, {duration: 4000});
@@ -63,19 +63,19 @@ export default function PrescriptionCreateForm() {
                     <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
                         <div className='flex flex-col gap-1 flex-1'>
                             <label className='font-semibold text-black'>Prescription ID</label>
-                            <input type="text" placeholder='Enter Prescription ID' id="prescriptionID" name="prescriptionID" value={value.prescriptionID} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="text" placeholder='Enter Prescription ID' id="PrescriptionID" name="PrescriptionID" value={value.PrescriptionID} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>First Name</label>
-                            <input type="text" placeholder='Enter First Name' id="firstName" name="firstName" value={value.firstname} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="text" placeholder='Enter First Name' id="firstName" name="firstName" value={value.firstName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Last Name</label>
-                            <input type="text" placeholder='Enter Last Name' id="lastName" name="lastName" value={value.lastname} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="text" placeholder='Enter Last Name' id="lastName" name="lastName" value={value.lastName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Age</label>
                             <input type="text" placeholder='Enter Age' id="age" name="age" value={value.age} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
                             <label className='font-semibold text-black'>Contact Number</label>
-                            <input type="text" placeholder='Enter Contact Number' id="contactNumber" name="contactNumber" value={value.contactNumber} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="text" placeholder='Enter Contact Number' id="contactNo" name="contactNo" value={value.contactNo} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             
                             <input type="submit" value="Submit" className='bg-light-blue hover:bg-blue font-semibold text-white p-3 rounded-lg w-full cursor-pointer'/>
@@ -83,14 +83,14 @@ export default function PrescriptionCreateForm() {
 
                         <div className='flex flex-col gap-1 flex-1'>
                         <label className='font-semibold text-black'>Medication Name</label>
-                            <input type="text" placeholder='Enter Medication Name' id="medicationName" name="medicationName" value={value.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <input type="text" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={value.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
 
-                            <label className='font-semibold text-black'>Unites</label>
-                            <input type="text" placeholder='Enter unites' id="unites" name="unites" value={value.units} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <label className='font-semibold text-black'>Units</label>
+                            <input type="text" placeholder='Enter units' id="units" name="units" value={value.units} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
                             
                             <label className='font-semibold text-black'>Notes</label>
-                            <textarea type="textarea" placeholder='Enter notes' id="notes" name="notes" value={value.notes} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <textarea type="textarea" placeholder='Enter notes' id="notes" name="notes" value={value.notes} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 '/>
 
                         </div>
                     </form>
