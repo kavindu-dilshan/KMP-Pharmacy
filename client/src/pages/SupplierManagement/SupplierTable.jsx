@@ -50,8 +50,7 @@ function SupplierTable() {
           return elem.supplierID.toLowerCase().includes(searchQuery.toLowerCase()) ||
               elem.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
               elem.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              elem.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              elem.contactNo.toLowerCase().includes(searchQuery.toLowerCase());
+              elem.address.toLowerCase().includes(searchQuery.toLowerCase()) ;
       });
       setSearchResults(filtered || []);
   };
