@@ -43,7 +43,6 @@ export default function App() {
       <Route path="/inventory-management" element={<InventoryManagement/>} />
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
       <Route path="/update-inventory/:id" element={<InventoryUpdateForm/>} />
-      {/* <Route path='/update-inventory/:id' element={<InventoryUpdateForm/>}/> */}
       <Route path='/supply-request' element={<SupplyRequestForm/>}/>       
 
 

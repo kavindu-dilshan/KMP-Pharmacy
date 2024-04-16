@@ -24,7 +24,7 @@ export default function PromotionCreateForm() {
         let parsedValue = value;
 
 
-        if (name === 'unitPrice' || name === 'quantity') {
+        if (name === 'Mprice' || name === 'Mquantity') {
             const numericValue = parseFloat(value);      
             if (numericValue < 0 || isNaN(numericValue)) {
                 setError('Please enter a valid non-negative value.');
@@ -83,7 +83,7 @@ export default function PromotionCreateForm() {
                             <label className='font-semibold text-black'>Medicine Name</label>
                             <input type="text" placeholder='Enter Medicine Name' id="Mname" name="Mname" value={value.Mname} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
-                            <label className='font-semibold text-black'>Unit Price</label>
+                            <label className='font-semibold text-black'>Unit Price(Rs.)</label>
                             <input type="Number" placeholder='Enter Unit price' id="Mprice" name="Mprice" value={value.Mprice} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
                             {error && <span className="text-red-500">{error}</span>}
 
@@ -96,7 +96,6 @@ export default function PromotionCreateForm() {
 
                             <label className='font-semibold text-black'>Store Condition</label>
                             <textarea type="textarea" placeholder='Enter Optimal storage conditions' id="Mdescription" name="storageCondition" value={value.storageCondition} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 max-h-20 min-h-10' required/>
-
                         </div>
 
                         <div className='flex flex-col gap-1 flex-1'>

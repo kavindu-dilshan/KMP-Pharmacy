@@ -57,6 +57,7 @@ export default function NavigationBar() {
                                 <Link to='/upload'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Upload Prescription</Link>
                                 <Link to="/feedback" className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Feedback</Link>
                                 <Link to='/promotions'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Promotions</Link>
+                                <Link to='/'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Pharmacy Products</Link>
                                 <Link to='/admin-dashboard'  className="block px-4 py-2 text-sm hover:bg-dark-blue rounded-md" role="menuitem">Admin Login</Link>
                             </div>
                         </div>
