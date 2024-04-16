@@ -55,7 +55,17 @@ export default function SideBar() {
       { title: "Notifications", path: '/notifications'},
     ],
   },
-    { title: "Employee Management", icon: <GrUserWorker /> },
+  {
+    title: "Employee Management",
+    icon: <GrUserWorker />,
+    path: "/employee-management",
+    submenu: true,
+    submenuItems: [
+      { title: "Employee Leave Apply", path: "/employee-Leave Apply" },
+      { title: "Employee OT Recording", path: "/employee-OT Recording" },
+      { title: "Employee Salary Assign", path: "/employee-Salary Assign" },
+    ],
+  },
     { title: "Payment Management", icon: <BiDollarCircle /> },
   ];
 

@@ -4,34 +4,31 @@ const employeeSchema = new mongoose.Schema({
     empId:{
         type:String
     },
-    firstName:{
-        type:String
-    },
-    lastName:{
-        type:String
-    },
-    DOB:{
-        type:Date
-    },
-    gender:{
-        type:String
-    },
-    email:{
+    name:{
         type:String
     },
     contactNo:{
         type:Number
     },
-    NIC:{
-        type:Number
+    DOB:{
+        type:Date
     },
     address:{
         type:String
     },
-    empType:{
+    email:{
         type:String
     },
-    qualifications:{
+    NIC:{
+        type:Number
+    },
+    empRole:{
+        type:String
+    },
+    maritalStatus:{
+        type:String
+    },
+    gender:{
         type:String
     }
 },{timestamps:true})

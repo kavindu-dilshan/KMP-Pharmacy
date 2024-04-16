@@ -33,6 +33,9 @@ import Profile from './pages/UserManagement/Profile';
 import UserTable from './pages/UserManagement/Usertable';
 import UserManagement from './pages/UserManagement/UserManagement';
 import PrivateRoute from './components/PrivateRoute';
+import EmployeeManagement from "./pages/EmployeeManagement/EmployeeManagement";
+import EmployeeCreateForm from "./pages/EmployeeManagement/EmployeeCreateForm";
+import EmployeeUpdateForm from "./pages/EmployeeManagement/EmployeeUpdateForm";
 
 export default function App() {
   return (
@@ -78,7 +81,11 @@ export default function App() {
         
       <Route element={<PrivateRoute />}>
         <Route path='/profile' element={<Profile />} />
-      </Route>    
+      </Route>
+
+      <Route path="/employee-management" element={<EmployeeManagement />} />
+      <Route path="/create-employee" element={<EmployeeCreateForm />} />
+      <Route path="/update-employee/:id" element={<EmployeeUpdateForm />} />
     </Routes>
   </Router>
   )
