@@ -27,7 +27,12 @@ import DeliveryManagement from './pages/DeliveryManagement/DeliveryManagement';
 import DriverManagement from './pages/DeliveryManagement/DriverManagement';
 import DriverTable from './pages/DeliveryManagement/DriverTable';
 import DriverSignIn from './pages/DeliveryManagement/DriverSignIn';
-
+import SignIn from './pages/UserManagement/SignIn';
+import SignUp from './pages/UserManagement/SignUp';
+import Profile from './pages/UserManagement/Profile';
+import UserTable from './pages/UserManagement/Usertable';
+import UserManagement from './pages/UserManagement/UserManagement';
+import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
   return (
@@ -53,9 +58,9 @@ export default function App() {
 
       <Route path="/inventory-management" element={<InventoryManagement/>} />
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
-      <Route path="/update-inventory/:id" element={<InventoryUpdateForm/>} />   
+      <Route path="/update-inventory/:id" element={<InventoryUpdateForm/>} />
       <Route path='/supply-request' element={<SupplyRequestForm/>}/>
-
+        
       <Route path='/delivery-management' element={<DeliveryManagement />} />
       <Route path='/taskpage' element={<DeliveryTaskTable />} />
       <Route path='/create-task' element={<DeliveryTaskcreateForm />} />
@@ -65,6 +70,15 @@ export default function App() {
       <Route path='/driver-update/:id' element={<DriverUpdateForm />} />
       <Route path='/drivers' element={<DriverTable />} />
       <Route path='/driver-signin' element={<DriverSignIn />} />
+
+      <Route path="/user-table" element={<UserTable />} />
+      <Route path="/user-management" element={<UserManagement />} />
+      <Route path='/sign-in' element={<SignIn />} />
+      <Route path='/sign-up' element={<SignUp />} />
+        
+      <Route element={<PrivateRoute />}>
+        <Route path='/profile' element={<Profile />} />
+      </Route>    
     </Routes>
   </Router>
   )

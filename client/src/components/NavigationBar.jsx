@@ -1,11 +1,15 @@
 import { FaChevronDown, FaList, FaSearch } from 'react-icons/fa';
 import { LuPhoneCall } from "react-icons/lu";
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import mainlogo from '../assets/Main-Logo.svg';
 import { Link } from 'react-router-dom';
 
 export default function NavigationBar() {
+    //user management
+    const { currentUser } = useSelector((state) => state.user);
+    //here
     const [isOpen , setIsOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
 
@@ -65,8 +69,19 @@ export default function NavigationBar() {
                     )}
                 </div>
                 <div className='flex'>
-                <button type='submit' class='bg-white text-dark-blue rounded-md p-2 px-6 flex text-sm ml-2 hover:bg-slate-100 transition-all'>Login</button>
-                <button type='submit' class='bg-green-600 text-white rounded-md p-2 px-6 flex text-sm ml-2 hover:bg-green-700 transition-all'>Register</button>
+                    {/* user manager */}
+                <Link to={'/profile'}>
+                {currentUser ? (
+                        <img className='rounded-full h-9 w-9 object-cover' src={currentUser.avatar} alt='profile' />
+                    ) : (
+                <button type='submit' className='bg-white text-dark-blue rounded-md p-2 px-6 flex text-sm ml-2
+                 hover:bg-slate-100 transition-all'>Login</button>)}
+                </Link>
+                {!currentUser && (
+    <Link to={'/sign-up'}>
+        <button type='submit' className='bg-green-600 text-white rounded-md p-2 px-6 flex text-sm ml-6 hover:bg-green-700 transition-all'>Register</button>
+    </Link>
+)}
                 </div>
             </div>
         </div>

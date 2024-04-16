@@ -15,7 +15,11 @@ import { RiDashboardFill } from "react-icons/ri";
 export default function SideBar() {
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const Menus = [
-    { title: "User Management", icon: <FaRegUser /> },
+    { title: "User Management", icon: <FaRegUser />, path: '/user-management', submenu: true,
+    submenuItems: [
+      {title: "User Table", path: '/user-management'},
+    ], 
+  },
     { title: "Delivery Management", icon: <FiTruck />, path: '/delivery-management', submenu: true,
     submenuItems: [
         { title: "Create Tasks", path: '/create-task'},
