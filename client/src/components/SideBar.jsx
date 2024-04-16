@@ -11,19 +11,22 @@ import { GrUserWorker } from "react-icons/gr";
 import { BiDollarCircle } from "react-icons/bi";
 import { BsChevronDown} from "react-icons/bs";
 import { RiDashboardFill } from "react-icons/ri";
-import SupplierTable from './../pages/SupplierManagement/SupplierTable';
 
 export default function SideBar() {
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const Menus = [
-    //user manager
     { title: "User Management", icon: <FaRegUser />, path: '/user-management', submenu: true,
     submenuItems: [
       {title: "User Table", path: '/user-management'},
     ], 
   },
-  //here
-    { title: "Delivery Management", icon: <FiTruck /> },
+    { title: "Delivery Management", icon: <FiTruck />, path: '/delivery-management', submenu: true,
+    submenuItems: [
+        { title: "Create Tasks", path: '/create-task'},
+        { title: "Task Table", path: '/taskpage' },
+        { title: "Manage Drivers", path: '/driver-management'}
+      ],
+ },
     { title: "Inventory Management", icon: <MdOutlineInventory />, path: '/inventory-management', submenu: true,
     submenuItems: [
       {title: "Enter new Item", path: '/create-inventory'},

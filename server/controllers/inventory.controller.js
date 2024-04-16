@@ -1,11 +1,11 @@
 import Inventory from "../models/inventory.model.js"
 
-const addInventoryTtem = async (req, res) => {
+const addInventoryItem = async (req, res) => {
     try {
-        const {medicineName, unitPrice, quantity, expirationDate, manufacturesDate, storageCondition, type,supplier} = req.body
+        const {Mname, Mprice, Mquantity, expirAt, manuAt, storageCondition, type,Msupplier,status} = req.body
         
         const newInventory = new Inventory({
-            medicineName, unitPrice, quantity, expirationDate, manufacturesDate, storageCondition, type,supplier
+            Mname, Mprice, Mquantity, expirAt, manuAt, storageCondition, type,Msupplier,status
         })
         await newInventory.save()
         res.status(200).json({success:true, message:'Item added to the inventory!', newInventory})
@@ -15,11 +15,11 @@ const addInventoryTtem = async (req, res) => {
     }
 }
 
-const getInventoryTtem = async(req, res) => {
+const getInventoryItem = async(req, res) => {
     try {
         const inventory = await Inventory.find()
         if(!inventory) {
-            return res.status(404).json({success:false, message:'Employee not found!'})
+            return res.status(404).json({success:false, message:'Item not found found!'})
         }
         res.status(200).json({success:true, inventory})
     } catch (error) {
@@ -58,4 +58,17 @@ const deleteInventoryItem = async (req, res) => {
     }
 }
 
-export {addInventoryTtem, getInventoryTtem, updateInventoryItem, deleteInventoryItem}
+const getItemToupdate = async (req, res) => {
+    try {
+        const inventory = await Inventory.findById(req.params.id)
+        if(!inventory) {
+            return res.status(404).json({success:false, message:'Inventory Item not found!'})
+        }
+        res.status(200).json({success:true, inventory})
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({success:false, message:'Internal server error'})
+    }
+}
+
+export {addInventoryItem, getInventoryItem, updateInventoryItem, deleteInventoryItem,getItemToupdate}

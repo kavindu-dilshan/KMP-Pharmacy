@@ -3,31 +3,31 @@ import mongoose from 'mongoose';
 const inventorySchema = new mongoose.Schema(
   {
 
-    medicineName: { 
+    Mname: { 
       type: String,
       required: true,
     },
 
-    unitPrice: {
+    Mprice: {
       type: Number,
       required: true,
     },
-    quantity: {
+    Mquantity: {
       type: Number,
       required: true,
     },
 
-    supplier: {
+    Msupplier: {
       type: String,
       required: true,
     },
 
-    expirationDate: {
+    expirAt: {
         type:Date,
         required: true,
     },
 
-    manufacturesDate: {
+    manuAt: {
         type:Date,
         required: true,
     },
@@ -37,6 +37,11 @@ const inventorySchema = new mongoose.Schema(
         required:true,
     },
     type: {
+      type: String,
+      required: true,
+    },
+
+    status: {
       type: String,
       required: true,
     },
