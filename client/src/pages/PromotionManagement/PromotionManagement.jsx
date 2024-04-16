@@ -6,6 +6,7 @@ import SideBar from '../../components/SideBar';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
+
 export default function PromotionManagement() {
   const [promotionsCount, setPromotionsCount] = useState(0);
   const [activePromotionsCount, setActivePromotionsCount] = useState(0);
@@ -58,7 +59,7 @@ export default function PromotionManagement() {
       })
       .then(data => {
         const promotions = data.promotion;
-
+       
         const doc = new jsPDF();
 
         const tableHeader = [['Promotion ID', 'Coupon Code', 'Coupon Price', 'Total Amount', 'Type', 'Created At', 'Expired At', 'Status']];
