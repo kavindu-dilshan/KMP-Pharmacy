@@ -61,7 +61,7 @@ export default function SupplyManagement() {
 
         const doc = new jsPDF();
 
-        const tableHeader = [['Supplier ID', 'First Name', 'Last Name', 'NIC', 'Address', 'Contact No', 'Email', 'Created At']];
+        const tableHeader = [['Supplier ID', 'Supplier Name', 'Last Name', 'NIC', 'Address', 'Contact No', 'Email', 'Created At']];
 
         const tableData = suppliers.map(supplier => [
           supplier.supplierID,

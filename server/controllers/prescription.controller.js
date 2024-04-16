@@ -58,4 +58,17 @@ const deletePrescription = async (req, res) => {
     }
 }
 
-export {addPrescription, getPrescription, updatePrescription, deletePrescription}
+const getUpdatePrescription = async (req, res) => {
+    try {
+        const prescription = await Prescription.findById(req.params.id)
+        if(!prescription) {
+            return res.status(404).json({success:false, message:'Prescription not found!'})
+        }
+        res.status(200).json({success:true, prescription})
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({success:false, message:'Internal server error'})
+    }
+}
+
+export {addPrescription, getPrescription, updatePrescription, deletePrescription,getUpdatePrescription}

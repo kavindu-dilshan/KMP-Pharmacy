@@ -2,10 +2,10 @@ import Employee from "../models/employee.model.js"
 
 const addEmpoyee = async (req, res) => {
     try {
-        const {empId, firstName, lastName, DOB, gender, email, contactNo, NIC, address, empType, qualifications} = req.body
+        const {empId, name, contactNo, DOB, address, email, NIC, empRole, maritalStatus, gender} = req.body
         
         const newEmployee = new Employee({
-            empId, firstName, lastName, DOB, gender, email, contactNo, NIC, address, empType, qualifications
+            empId, name, contactNo, DOB, address, email, NIC, empRole, maritalStatus, gender
         })
         await newEmployee.save()
         res.status(200).json({success:true, message:'Employee added successfully!', newEmployee})
@@ -58,4 +58,17 @@ const deleteEmployee = async (req, res) => {
     }
 }
 
-export {addEmpoyee, getEmployee, updateEmployee, deleteEmployee}
+const getUpdateEmployee = async (req, res) => {
+    try {
+        const employee = await Employee.findById(req.params.id)
+        if(!employee) {
+            return res.status(404).json({success:false, message:'Employee not found!'})
+        }
+        res.status(200).json({success:true, employee})
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({success:false, message:'Internal server error'})
+    }
+}
+
+export {addEmpoyee, getEmployee, updateEmployee, deleteEmployee, getUpdateEmployee}
