@@ -16,7 +16,13 @@ import SupplierTable from './../pages/SupplierManagement/SupplierTable';
 export default function SideBar() {
   const [subMenuOpen, setSubMenuOpen] = useState({});
   const Menus = [
-    { title: "User Management", icon: <FaRegUser /> },
+    //user manager
+    { title: "User Management", icon: <FaRegUser />, path: '/user-management', submenu: true,
+    submenuItems: [
+      {title: "User Table", path: '/user-management'},
+    ], 
+  },
+  //here
     { title: "Delivery Management", icon: <FiTruck /> },
     { title: "Inventory Management", icon: <MdOutlineInventory />, path: '/inventory-management', submenu: true,
     submenuItems: [

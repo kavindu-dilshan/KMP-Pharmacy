@@ -19,6 +19,14 @@ import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssig
 import PrescriptionNotification from './pages/PrescriptionManagement/PrescriptionNotifications';
 import PrescriptionManagement from './pages/PrescriptionManagement/PrescriptionManagement';
 
+//user management
+import SignIn from './pages/UserManagement/SignIn';
+import SignUp from './pages/UserManagement/SignUp';
+import Profile from './pages/UserManagement/Profile';
+import UserTable from './pages/UserManagement/Usertable';
+import UserManagement from './pages/UserManagement/UserManagement';
+import PrivateRoute from './components/PrivateRoute';
+
 export default function App() {
   return (
   <Router>
@@ -44,8 +52,18 @@ export default function App() {
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
       <Route path="/update-inventory/:id" element={<InventoryUpdateForm/>} />
       {/* <Route path='/update-inventory/:id' element={<InventoryUpdateForm/>}/> */}
-      <Route path='/supply-request' element={<SupplyRequestForm/>}/>       
+      <Route path='/supply-request' element={<SupplyRequestForm/>}/>   
 
+      {/* user manager */}
+        <Route path="/user-table" element={<UserTable />} />
+        <Route path="/user-management" element={<UserManagement />} />
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route path='/sign-up' element={<SignUp />} />
+        
+        <Route element={<PrivateRoute />}>
+          <Route path='/profile' element={<Profile />} />
+        </Route>    
+        {/* here */}
 
       
       </Routes>
