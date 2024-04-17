@@ -91,14 +91,14 @@ export default function SupplierUpdateForm() {
                         <label className='font-semibold text-black'>Supplier ID</label>
                         <input type="text" placeholder='Enter supplier ID' id="supplierID" name="supplierID" value={supplierData.supplierID} onChange={handleChange} className='border-2 border-gray bg-slate-200 outline-none rounded-md p-2 mb-4' readOnly/>
 
-                        <label className='font-semibold text-black'>First Name</label>
-                        <input type="text" placeholder='Enter first name' id="firstName" name="firstName" value={supplierData.firstName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
+                        <label className='font-semibold text-black'>Supplier</label>
+                        <input type="text" placeholder='Enter Supplier name' id="firstName" name="firstName" value={supplierData.firstName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
 
-                        <label className='font-semibold text-black'>Last Name</label>
-                        <input type="text" placeholder='Enter coupon price' id="lastName" name="lastName" value={supplierData.lastName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
+                        <label className='font-semibold text-black'>Contact Person Name</label>
+                        <input type="text" placeholder='Enter contact person Name' id="lastName" name="lastName" value={supplierData.lastName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
 
                         <label className='font-semibold text-black'>Contact Number</label>
-                        <input type="text" placeholder='Enter Contact Number' id="contactNumber" name="contactNo" value={supplierData.contactNo} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
+                        <input type="text" placeholder='Enter Contact Number' id="contactNo" name="contactNo" value={supplierData.contactNo} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
 
                         <label className='font-semibold text-black'>Address</label>
                         <textarea type="textarea" placeholder='Enter Address' id="address" name="address" value={supplierData.address} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 max-h-40 min-h-40' />
