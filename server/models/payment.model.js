@@ -2,11 +2,15 @@ import mongoose from 'mongoose';
 
 const paymentSchema = new mongoose.Schema(
   {
-    firstname: {
+    firstName: {
       type: String,
       required: true,
     },
-    lastname: {
+    lastName: {
+      type: String,
+      required: true,
+    },
+    NIC: {
       type: String,
       required: true,
     },
@@ -15,8 +19,8 @@ const paymentSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    phonenumber: {
-      type: String,
+    phoneNumber: {
+      type: Number,
       required: true,
     },
     address: {
@@ -27,7 +31,7 @@ const paymentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    postalcode: {
+    postalCode: {
       type: String,
       required: true,
     },
@@ -43,4 +47,4 @@ const paymentSchema = new mongoose.Schema(
 
 const Payment = mongoose.model('Payment', paymentSchema);
 
-export default Payment;
+export default Payment;

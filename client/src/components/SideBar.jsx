@@ -66,7 +66,7 @@ export default function SideBar() {
       { title: "Employee Salary Assign", path: "/employee-Salary Assign" },
     ],
   },
-    { title: "Payment Management", icon: <BiDollarCircle /> },
+    { title: "Payment Management", icon: <BiDollarCircle />, path: '/user-payment' },
   ];
 
   const toggleSubMenu = (index) => {
