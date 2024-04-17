@@ -6,7 +6,6 @@ const routers = express.Router();
 
 routers.post('/create', addPayment)
 routers.get('/read', getPayment)
-
 routers.put('/update/:id', updatePayment)
 routers.delete('/delete/:id', deletePayment)
 routers.get('/get/:id', getUpdatePayment)
