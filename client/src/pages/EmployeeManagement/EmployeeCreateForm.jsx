@@ -170,6 +170,12 @@ export default function EmployeeCreateForm() {
               >
                 <option value="Delivery Manager">Delivery Manager</option>
                 <option value="Promotion Manager">Promotion Manager</option>
+                <option value="Supplier Manager">Delivery Manager</option>
+                <option value="Prescription Manager">Promotion Manager</option>
+                <option value="Employee Manager">Delivery Manager</option>
+                <option value="Payment Manager">Promotion Manager</option>
+                <option value="Inventory Manager">Delivery Manager</option>
+                <option value="User Manager">Promotion Manager</option>
               </select>
 
               <label className="font-semibold text-black">Marital Status</label>
