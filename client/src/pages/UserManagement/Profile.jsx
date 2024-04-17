@@ -174,8 +174,9 @@ export default function Profile() {
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='tel'
           placeholder='phone number'
+          pattern='[0-9]{10}'
           defaultValue={currentUser.phonenumber}
           id='phonenumber'
           className='border p-3 rounded-lg'
