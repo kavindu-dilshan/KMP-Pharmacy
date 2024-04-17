@@ -53,7 +53,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/feedback" element={<Feedback />} />
       <Route path="/feedback-submit" element={<FeedbackSubmitForm />} />
-      <Route path="/manage-feedback" element={<FeedbackManagement />} />
+      <Route path="/feedback-management" element={<FeedbackManagement />} />
       <Route path="/admin-dashboard" element={<AdminDashboard />} />
       <Route path='/promotion-management' element={<PromotionManagement />} />
       <Route path='/create-promotion' element={<PromotionCreateForm />} />
