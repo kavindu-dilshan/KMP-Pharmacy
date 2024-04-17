@@ -17,6 +17,7 @@ export default function SupplierCreateForm() {
         address: ''
     });
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -33,7 +34,17 @@ export default function SupplierCreateForm() {
             setErrors(validationErrors);
             return;
         }
+        setLoading(true);
         try {
+            const isSupplierIDUnique = await checkSupplierID(value.supplierID);
+            if (!isSupplierIDUnique) {
+                setErrors(prevState => ({
+                    ...prevState,
+                    supplierID: 'Supplier ID already exists'
+                }));
+                setLoading(false);
+                return;
+            }
             const addSupplier = await axios.post('http://localhost:3000/api/supplier/create', value);
             const response = addSupplier.data;
             if (response.success) {
@@ -46,6 +57,7 @@ export default function SupplierCreateForm() {
         } catch (error) {
             console.log(error);
         }
+        setLoading(false);
         console.log(value);
     };
 
@@ -78,6 +90,16 @@ export default function SupplierCreateForm() {
             errors.address = 'Address is required';
         }
         return errors;
+    };
+
+    const checkSupplierID = async (supplierID) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/api/supplier/check/${supplierID}`);
+            return response.data.unique;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     };
 
     const isValidEmail = (email) => {
@@ -125,7 +147,7 @@ export default function SupplierCreateForm() {
                             <textarea type="textarea" placeholder='Enter Address' id="address" name="address" value={value.address} onChange={handleChange} className={`border-2 border-gray outline-none rounded-md p-2 mb-4 ${errors.address && 'border-red'}`} required/>
                             {errors.address && <span className="text-red text-xs">{errors.address}</span>}
                             
-                            <input type="submit" value="Submit" className='bg-light-blue hover:bg-blue font-semibold text-white p-3 rounded-lg w-full cursor-pointer'/>
+                            <input type="submit" value={loading ? 'Submitting...' : 'Submit'} className='bg-light-blue hover:bg-blue font-semibold text-white p-3 rounded-lg w-full cursor-pointer' disabled={loading}/>
                         </div>
 
                         <div className='flex flex-col gap-1 flex-1'>
