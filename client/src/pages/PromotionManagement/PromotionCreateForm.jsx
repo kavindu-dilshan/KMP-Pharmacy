@@ -61,7 +61,7 @@ export default function PromotionCreateForm() {
                     </div>
                 </div>
                 <div className='p-10 bg-paleblue m-10 rounded-3xl max-w-4xl border-2 border-light-blue'>
-                    <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
+                    <form autoComplete='off' onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
                         <div className='flex flex-col gap-1 flex-1'>
                             <label className='font-semibold text-black'>Promotion ID</label>
                             <input type="text" placeholder='Enter promotion ID' id="promotionID" name="promotionID" value={value.promotionID} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
@@ -70,10 +70,10 @@ export default function PromotionCreateForm() {
                             <input type="text" placeholder='Enter coupon code' id="couponCode" name="couponCode" value={value.couponCode} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Coupon Price</label>
-                            <input type="text" placeholder='Enter coupon price' id="couponPrice" name="couponPrice" value={value.couponPrice} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="number" placeholder='Enter coupon price' id="couponPrice" name="couponPrice" value={value.couponPrice} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Total Amount</label>
-                            <input type="text" placeholder='Enter total amount' id="totalAmount" name="totalAmount" value={value.totalAmount} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="number" placeholder='Enter total amount' id="totalAmount" name="totalAmount" value={value.totalAmount} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Description</label>
                             <textarea type="textarea" placeholder='Enter description' id="description" name="description" value={value.description} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 max-h-40 min-h-40' required/>
