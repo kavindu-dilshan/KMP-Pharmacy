@@ -65,14 +65,14 @@ export default function SupplierCreateForm() {
                             <label className='font-semibold text-black'>Supplier ID</label>
                             <input type="text" placeholder='Enter Supplier ID' id="supplierID" name="supplierID" value={value.supplierID} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
-                            <label className='font-semibold text-black'>First Name</label>
-                            <input type="text" placeholder='Enter First Name' id="firstName" name="firstName" value={value.firstName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <label className='font-semibold text-black'>Supplier</label>
+                            <input type="text" placeholder='Enter Supplier Name' id="firstName" name="firstName" value={value.firstName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
-                            <label className='font-semibold text-black'>Last Name</label>
-                            <input type="text" placeholder='Enter Last Name' id="lastName" name="lastName" value={value.lastName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <label className='font-semibold text-black'>Contact Person</label>
+                            <input type="text" placeholder='Enter Contact Person Name' id="lastName" name="lastName" value={value.lastName} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Contact Number</label>
-                            <input type="text" placeholder='Enter Contact Number' id="contactNumber" name="contactNumber" value={value.contactNumber} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
+                            <input type="text" placeholder='Enter Contact Number' id="contactNo" name="contactNo" value={value.contactNo} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
 
                             <label className='font-semibold text-black'>Address</label>
                             <textarea type="textarea" placeholder='Enter Address' id="address" name="address" value={value.address} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
