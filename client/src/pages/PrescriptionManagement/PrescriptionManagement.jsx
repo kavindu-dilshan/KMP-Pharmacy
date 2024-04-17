@@ -117,7 +117,7 @@ export default function PrescriptionManagement() {
             <div><Link to="/create-prescription" className='bg-light-blue text-white hover:bg-blue font-semibold rounded-lg inline-block w-full p-3'>Create New Prescription</Link></div>
             <div><Link to="/prescription-assign" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>Assign page </Link></div>
             <div><Link to="/inventory-management" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>Check Inventory </Link></div>
-            <div><Link to="/prescription-assign" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>Check Payment </Link></div>
+            <div><Link to="/user-payment" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>Check Payment </Link></div>
           </div>
         </div>
         </div>

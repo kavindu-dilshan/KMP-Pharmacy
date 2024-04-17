@@ -40,12 +40,20 @@ import EmployeeManagement from "./pages/EmployeeManagement/EmployeeManagement";
 import EmployeeCreateForm from "./pages/EmployeeManagement/EmployeeCreateForm";
 import EmployeeUpdateForm from "./pages/EmployeeManagement/EmployeeUpdateForm";
 
+import UserPaymentDetails from './pages/UserManagement/UserPaymentDetails';
+
+import FeedbackSubmitForm from './pages/PromotionManagement/FeedbackSubmitForm';
+import FeedbackManagement from './pages/PromotionManagement/FeedbackManagement';
+
+
 export default function App() {
   return (
   <Router>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/feedback" element={<Feedback />} />
+      <Route path="/feedback-submit" element={<FeedbackSubmitForm />} />
+      <Route path="/manage-feedback" element={<FeedbackManagement />} />
       <Route path="/admin-dashboard" element={<AdminDashboard />} />
       <Route path='/promotion-management' element={<PromotionManagement />} />
       <Route path='/create-promotion' element={<PromotionCreateForm />} />
@@ -84,6 +92,8 @@ export default function App() {
       <Route path="/user-management" element={<UserManagement />} />
       <Route path='/sign-in' element={<SignIn />} />
       <Route path='/sign-up' element={<SignUp />} />
+      <Route path='/user-payment' element={<UserPaymentDetails />} />
+
         
       <Route element={<PrivateRoute />}>
         <Route path='/profile' element={<Profile />} />

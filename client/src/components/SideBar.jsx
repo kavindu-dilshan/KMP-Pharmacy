@@ -45,7 +45,7 @@ export default function SideBar() {
     submenuItems: [
       { title: "Create Promotions", path: '/create-promotion'},
       { title: "Promotions Table", path: '/promotion-management' },
-      { title: "Manage Feedbacks", path: '/feedbacks'},
+      { title: "Manage Feedbacks", path: '/feedback-management'},
     ],
   },
     { title: "Prescription Management", icon: <LiaFilePrescriptionSolid />,path: '/prescription-management', submenu: true,
@@ -66,7 +66,7 @@ export default function SideBar() {
       { title: "Employee Salary Assign", path: "/employee-Salary Assign" },
     ],
   },
-    { title: "Payment Management", icon: <BiDollarCircle /> },
+    { title: "Payment Management", icon: <BiDollarCircle />, path: '/user-payment' },
   ];
 
   const toggleSubMenu = (index) => {

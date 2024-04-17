@@ -194,6 +194,12 @@ export default function EmployeeUpdateForm() {
                             >
                                 <option value="Delivery Manager">Delivery Manager</option>
                                 <option value="Promotion Manager">Promotion Manager</option>
+                                <option value="Supplier Manager">Supplier Manager</option>
+                                <option value="Prescription Manager">Prescription Manager</option>
+                                <option value="Employee Manager">Employee Manager</option>
+                                <option value="Payment Manager">Payment Manager</option>
+                                <option value="Inventory Manager">Inventory Manager</option>
+                                <option value="User Manager">User Manager</option>
                             </select>
 
                             <label className="font-semibold text-black">Marital Status</label>

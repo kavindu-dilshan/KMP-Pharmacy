@@ -108,10 +108,10 @@ export default function PrescriptionAssignForm() {
 
                     <div className='flex flex-col gap-1 flex-1'>
                         <label className='font-semibold text-black'>Medication Name</label>
-                        <input type="text" placeholder='Enter Medication Name' id="medicationName" name="medicationName" value={prescriptionData.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' />
+                        <input type="text" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={prescriptionData.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' />
 
                         <label className='font-semibold text-black'>Unites</label>
-                        <input type="text" placeholder='Enter unites' id="unites" name="unites" value={prescriptionData.units} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
+                        <input type="text" placeholder='Enter unites' id="units" name="units" value={prescriptionData.units} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
 
                         <label className='font-semibold text-black'>Created Date</label>
                         <input type="date" id="createdAt" name="createdAt" value={prescriptionData.createdAt} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4' />
