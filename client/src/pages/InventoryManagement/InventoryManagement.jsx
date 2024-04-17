@@ -35,7 +35,7 @@ export default function PromotionManagement() {
         const inventory = data.inventory;
         setInventoryCount(inventory.length);
 
-        //Implement function to get all value           //Total price is and callback function(A function that is passed as a argument to a another function)
+        //Implement function to get all value  //Total price is and callback function(A function that is passed as a argument to a another function)
         const totalPrice = inventory.reduce((acc, item) => {
           return acc + (item.Mprice * item.Mquantity);
         }, 0);

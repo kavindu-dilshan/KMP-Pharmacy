@@ -65,6 +65,7 @@ function InventoryTable() {
             const supplierMatch = elem.Msupplier.toLowerCase().includes(searchQuery.toLowerCase());
             const typeMatch = elem.type.toLowerCase().includes(searchQuery.toLowerCase());
             const quantityMatch = elem.Mquantity.toString().includes(searchQuery);
+            
             return nameMatch || priceMatch || supplierMatch || typeMatch || quantityMatch || statusMatch;
         });
         setSearchResults(filtered || []);
@@ -102,7 +103,7 @@ function InventoryTable() {
             <div>
                 <form  className='px-10 py-2 pb-7 flex justify-end' onSubmit={handleSearch}>
                     <div className='relative'>
-                        <input type='text' placeholder='Search' className='bg-white border-2 border-light-blue rounded-md placeholder-gray focus:outline-none w-56 p-2 pl-10' onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery}/>
+                        <input type='text' placeholder='Search' className='bg-white border-2 border-light-blue rounded-md placeholder-gray focus:outline-none w-56 p-2 pl-10' onChange={(e) => setSearchQuery(e.target.value)}  value={searchQuery}/>
                         <FaSearch className='text-gray absolute top-1/2 transform -translate-y-1/2 left-3' />
                     </div>
                     <button type='submit' className='bg-light-blue border-2 border-light-blue text-white rounded-md w-32 ml-2 hover:bg-blue hover:border-blue transition-all'>Search</button>

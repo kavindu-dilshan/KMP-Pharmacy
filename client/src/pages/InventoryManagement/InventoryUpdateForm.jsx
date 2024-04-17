@@ -22,21 +22,24 @@ export default function InventoryUpdateForm() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/inventory/getsingleitem/${id}`)
-        .then(result => {
-            const inventory = result.data.inventory;
+        getusingID();
+    }, [id]);
 
+    const getusingID = async  ()  =>{
+
+        try {
+            const result = await axios.get(`http://localhost:3000/api/inventory/getsingleitem/${id}`)
+            const inventory = result.data.inventory;
+            
             inventory.manuAt = inventory.manuAt.split('T')[0];
             inventory.expirAt = inventory.expirAt.split('T')[0];
             setinventorydata(inventory);
-
             console.log(inventory);
-        })
-        .catch(err => {
+        } catch (err) {
             console.log(err);
-        });
-    }, [id]);
-
+        }
+       
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
