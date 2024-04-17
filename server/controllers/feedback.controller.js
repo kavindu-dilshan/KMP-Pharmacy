@@ -2,10 +2,10 @@ import Feedback from "../models/feedback.model.js"
 
 const createFeedback = async (req, res) => {
     try {
-        const {name, email, rating, feedback} = req.body
+        const {name, email, rating, feedback, status} = req.body
         
         const newFeedback = new Feedback({
-            name, email, rating, feedback
+            name, email, rating, feedback, status
         })
         await newFeedback.save()
         res.status(200).json({success:true, message:'Feedback submited successfully!', newFeedback})

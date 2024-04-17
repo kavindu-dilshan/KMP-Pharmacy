@@ -65,6 +65,7 @@ export default function SignUp() {
         <input
           type='text'
           placeholder='phone number'
+          pattern='[0-9]{10}'
           className='border p-3 rounded-lg'
           id='phonenumber'
           onChange={handleChange}

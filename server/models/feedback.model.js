@@ -16,7 +16,10 @@ const feedbackSchema = new mongoose.Schema({
     feedback:{
         type:String,
         required:true,
-    }
+    },
+    status:{
+        type:String,
+    },
 },{timestamps:true})
 
 const Feedback = mongoose.model('Feedback', feedbackSchema);

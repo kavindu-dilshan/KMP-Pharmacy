@@ -9,6 +9,7 @@ const addPayment = async (req, res) => {
         })
         await newPayment.save()
         res.status(200).json({success:true, message:'Payment created successfully!', newPayment})
+
     } catch (error) {
         console.log(error);
         res.status(500).json({success:false, message:'Internal Server Error'})
