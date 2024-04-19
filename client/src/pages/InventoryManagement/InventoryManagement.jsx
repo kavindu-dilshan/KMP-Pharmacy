@@ -39,7 +39,9 @@ export default function PromotionManagement() {
         const totalPrice = inventory.reduce((acc, item) => {
           return acc + (item.Mprice * item.Mquantity);
         }, 0);
-        setfullPrice(totalPrice);    
+
+        const roundValue = Number(totalPrice).toFixed(2)
+        setfullPrice(roundValue);    
 
         const expiredInventory = inventory.filter(inventory => inventory.status === 'Expired');
         setExpiredInventoryCount(expiredInventory.length);
@@ -77,7 +79,16 @@ export default function PromotionManagement() {
       .then(data => {
         const items = data.inventory;
 
-        const doc = new jsPDF();
+        const doc = new jsPDF({
+          orientation: "portrait",
+          unit: "pt",
+          
+        });
+
+        // const logoPath = join(__dirname, '../assets/Main-logo.svg');
+        // const logoSVG = fs.readFileSync(logoPath, 'utf8');
+
+        // doc.addSVG(logoSVG, 10, 10, 50, 50);
 
         // Table for inventory items
         const tableHeader = [['Medicine Name', 'Unit price','Quantity', 'Supplier', 'Manufactured Date', 'Expiration Date', 'StorageCondition', 'type', 'status']];
@@ -95,6 +106,7 @@ export default function PromotionManagement() {
         ]);
 
         doc.autoTable({
+          startY:150,
           head: tableHeader,
           body: tableData,
         });
@@ -106,7 +118,7 @@ export default function PromotionManagement() {
         ];
 
         doc.autoTable({
-          startY: doc.autoTable.previous.finalY + 10, // Position the table below the previous one
+          startY: doc.autoTable.previous.finalY + 90, // Position the table below the previous one
           head: countTableHeader,
           body: countTableData,
         });
@@ -120,10 +132,19 @@ export default function PromotionManagement() {
         ];
 
         doc.autoTable({
-          startY: doc.autoTable.previous.finalY + 10, // Position the table below the previous one
+          startY: doc.autoTable.previous.finalY + 50, // Position the table below the previous one
           head: TypeTableHeader,
           body: TypeTableData,
         });
+
+        doc.setLineWidth(2); 
+        doc.setDrawColor(0,90,139);
+        doc.line(10, 10, 580, 10); // Top line
+        doc.line(10, 100, 580, 100); // second Top line
+        doc.line(580, 830, 580, 10); // Right line
+        doc.line(10, 830, 580, 830);// Bottom line
+        doc.line(10, 830, 10, 10); //leftlines
+        
 
         doc.save('InventoryReport.pdf');
       })
