@@ -52,8 +52,9 @@ export default function PromotionManagement() {
         setCapsuleInventoryCount(numofcapsules.length);
         const numofliquid = inventory.filter(inventory => inventory.type === 'Liquid')
         setLiquidInventoryCount(numofliquid.length);
-        const numofother = inventory.filter(inventory => inventory.type === 'other')
+        const numofother = inventory.filter(inventory => inventory.type === 'Other')
         setOtherInventoryCount(numofother.length);
+
       })
       .catch(error => {
         console.error('Error fetching items:', error);
@@ -66,7 +67,7 @@ export default function PromotionManagement() {
     return formattedDate;
   };
 
-  const generateReport = () => {
+  const generateReport = (inventorycount) => {
     fetch('http://localhost:3000/api/inventory/read')
       .then(response => {
         if (response.ok) {
@@ -78,81 +79,106 @@ export default function PromotionManagement() {
       })
       .then(data => {
         const items = data.inventory;
-
+        const numoftablets = items.filter(inventory => inventory.type === 'Tablet')
+        setTabletInventoryCount(numoftablets.length);
+        const numofcapsules = items.filter(inventory => inventory.type === 'Capsule')
+        setCapsuleInventoryCount(numofcapsules.length);
+        const numofliquid = items.filter(inventory => inventory.type === 'Liquid')
+        setLiquidInventoryCount(numofliquid.length);
+        const numofother = items.filter(inventory => inventory.type === 'Other')
+        setOtherInventoryCount(numofother.length);
+  
         const doc = new jsPDF({
           orientation: "portrait",
           unit: "pt",
-          
+          format: "letter"
         });
+  
+        const inventory = data.inventory
+        const inventorySize = data.inventory.length.toString();
+        
+        const totalPrice = inventory.reduce((acc, item) => {
+          return acc + (item.Mprice * item.Mquantity);
+        }, 0);
 
-        // const logoPath = join(__dirname, '../assets/Main-logo.svg');
-        // const logoSVG = fs.readFileSync(logoPath, 'utf8');
+        const totalPrice1  = totalPrice.toString()
 
-        // doc.addSVG(logoSVG, 10, 10, 50, 50);
-
-        // Table for inventory items
-        const tableHeader = [['Medicine Name', 'Unit price','Quantity', 'Supplier', 'Manufactured Date', 'Expiration Date', 'StorageCondition', 'type', 'status']];
-
-        const tableData = items.map(inventory => [
-          inventory.Mname,
-          inventory.Mprice,
-          inventory.Mquantity,
-          inventory.Msupplier,
-          formatDate(inventory.manuAt),
-          formatDate(inventory.expirAt),
-          inventory.storageCondition,
-          inventory.type,
-          inventory.status
-        ]);
-
-        doc.autoTable({
-          startY:150,
-          head: tableHeader,
-          body: tableData,
-        });
-
-        const countTableHeader = [['Item Status', 'Count']];
-        const countTableData = [
-          ['Expired Items', expiredinventoryCount],
-          ['Active Items', inventorycount - expiredinventoryCount],
-        ];
-
-        doc.autoTable({
-          startY: doc.autoTable.previous.finalY + 90, // Position the table below the previous one
-          head: countTableHeader,
-          body: countTableData,
-        });
-
-        const TypeTableHeader = [['Type', 'Count']];
-        const TypeTableData = [
-          ['Tablets', tabletcount],
-          ['Capsules', capsulecount],
-          ['Liquid', liquidcount],
-          ['Other', othercount]
-        ];
-
-        doc.autoTable({
-          startY: doc.autoTable.previous.finalY + 50, // Position the table below the previous one
-          head: TypeTableHeader,
-          body: TypeTableData,
-        });
+        const margin = 40;
 
         doc.setLineWidth(2); 
         doc.setDrawColor(0,90,139);
         doc.line(10, 10, 580, 10); // Top line
         doc.line(10, 100, 580, 100); // second Top line
-        doc.line(580, 830, 580, 10); // Right line
-        doc.line(10, 830, 580, 830);// Bottom line
-        doc.line(10, 830, 10, 10); //leftlines
-        
+        doc.line(580, 780, 580, 10); // Right line
+        doc.line(10, 780, 580, 780);// Bottom line
+        doc.line(10, 780, 10, 10); //leftlines
+  
+        // Title
+        doc.setFontSize(30);
+        doc.text("Inventory Report", margin, 60);
+        doc.setFontSize(15);
 
+        doc.setTextColor(0, 0, 255);
+        doc.text("Total Value(Rs.):",375 ,80);
+        doc.setTextColor(0, 100, 0);
+        doc.text(totalPrice1, 490 ,80);
+        
+  
+        
+        // Inventory items section  
+        doc.setFontSize(14);
+        doc.setTextColor(0, 0, 255);
+        doc.text("Inventory Items", margin, 120);
+        doc.setTextColor(0, 0, 0);
+        doc.text("(", 140,120);
+        doc.text(inventorySize, 145,120);
+        doc.text(")", 160,120);
+        doc.setTextColor(0);
+        doc.setFontSize(12);
+        let yPos = 150;
+        items.forEach((item, index) => {
+          doc.text(`- ${item.Mname} | Price: ${item.Mprice} | Quantity: ${item.Mquantity} | Supplier: ${item.Msupplier}`, margin, yPos);
+          yPos += 30;
+        });
+  
+        // Counts section
+        yPos += 20;
+        doc.setFontSize(14);
+        doc.setTextColor(0, 0, 255);
+        doc.text("Counts", margin, yPos);
+        doc.setTextColor(255, 0, 0);
+        doc.setFontSize(12);
+        yPos += 20;
+        doc.text(`- Expired Items: ${expiredinventoryCount}`, margin, yPos);
+        doc.setTextColor(0, 128, 0);
+        yPos += 20;
+        doc.text(`- Active Items: ${inventorySize - expiredinventoryCount}`, margin, yPos);
+  
+        // Types section
+        yPos += 40;
+        doc.setFontSize(14);
+        doc.setTextColor(0, 0, 255);
+        doc.text("Types", margin, yPos);
+        doc.setTextColor(0);
+        doc.setFontSize(12);
+        yPos += 20;
+        doc.text(`- Tablets: ${tabletcount}`, margin, yPos);
+        yPos += 20;
+        doc.text(`- Capsules: ${capsulecount}`, margin, yPos);
+        yPos += 20;
+        doc.text(`- Liquid: ${liquidcount}`, margin, yPos);
+        yPos += 20;
+        doc.text(`- Other: ${othercount}`, margin, yPos);
+  
         doc.save('InventoryReport.pdf');
       })
       .catch(error => {
         console.error('Error generating report:', error);
       });
   };
-
+  
+  
+  
   return (
     <div className='flex'>
       <SideBar />
