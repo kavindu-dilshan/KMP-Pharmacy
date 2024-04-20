@@ -10,6 +10,7 @@ import SupplyManagement from './pages/SupplierManagement/SupplyManagement';
 import SupplierCreateForm from './pages/SupplierManagement/SupplierCreateForm';
 import Orders from './pages/SupplierManagement/Orders';
 import SupplierUpdateForm from './pages/SupplierManagement/SupplierUpdateForm';
+import InventoryUserPage from './pages/InventoryManagement/InventoryUserPageView';
 import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreateForm';
 import InventoryUpdateForm from './pages/InventoryManagement/InventoryUpdateForm';
 import SupplyRequestForm from './pages/InventoryManagement/SupplyRequest';
@@ -77,6 +78,7 @@ export default function App() {
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
       <Route path="/update-inventory/:id" element={<InventoryUpdateForm/>} />
       <Route path='/supply-request' element={<SupplyRequestForm/>}/>
+      <Route path='/inventory-user' element={<InventoryUserPage/>}/>
         
       <Route path='/delivery-management' element={<DeliveryManagement />} />
       <Route path='/taskpage' element={<DeliveryTaskTable />} />
