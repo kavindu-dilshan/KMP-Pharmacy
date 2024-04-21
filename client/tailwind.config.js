@@ -17,7 +17,7 @@ export default {
         "lighter-blue": "#D9F2FF",
       },
       fontFamily: {
-        sans: ['Inter'],
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },
