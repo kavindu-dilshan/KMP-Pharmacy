@@ -6,7 +6,7 @@ import SideBar from '../../components/SideBar';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
-export default function inventoryManagement() {
+export default function InventoryManagement() {
   const [inventorycount, setInventoryCount] = useState(0);
   const [expiredinventoryCount, setExpiredInventoryCount] = useState(0);
   const [tabletcount, setTabletInventoryCount] = useState(0);
@@ -22,7 +22,7 @@ export default function inventoryManagement() {
   }, []);
 
   const fetchInventory = () => {
-    fetch('http://localhost:3000/api/inventory/read')
+    fetch(' ')
       .then(response => {
         if (response.ok) {
           return response.json();
