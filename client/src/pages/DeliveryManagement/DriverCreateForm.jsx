@@ -54,52 +54,61 @@ export default function DriverCreateForm() {
   };
   
   const handleSubmit = async (e) => {
-      e.preventDefault(); // Prevent form submission
-
-      const fieldErrors = Object.entries(errors).filter(([, error]) => error !== '');
-
+    e.preventDefault(); // Prevent form submission
+  
+    const fieldErrors = Object.entries(errors).filter(([, error]) => error !== '');
+    const allErrors = [];
+  
     if (fieldErrors.length > 0) {
-
-    fieldErrors.forEach(([, error]) => {
-      toast.error(error);
-    });
-    return;
-  }
+      fieldErrors.forEach(([, error]) => {
+        allErrors.push(error);
+      });
+  
+      allErrors.forEach(error => {
+        toast.error(error);
+      });
+  
+      return;
+    }
+  
     try {
-
-    const existingDriverId = await axios.get(`http://localhost:3000/api/driver/check?driverId=${value.driverId}`);
-    if (existingDriverId.data.exists) {
-      toast.error('Driver ID already exists');
-      return;
-    }
-    const existingDriverLicense = await axios.get(`http://localhost:3000/api/driver/check?driverLicense=${value.driverLicense}`);
-    if (existingDriverLicense.data.exists) {
-      toast.error('Driver license already exists');
-      return;
-    }
-    const existingVehicleLicense = await axios.get(`http://localhost:3000/api/driver/check?vehicleLicense=${value.vehicleLicense}`);
-    if (existingVehicleLicense.data.exists) {
-      toast.error('Vehicle license already exists');
-      return;
-    }
-    const existingPassword = await axios.get(`http://localhost:3000/api/driver/check?password=${value.password}`);
-    if (existingPassword.data.exists) {
-      toast.error('Password already exists');
-      return;
-    }
-          const addDriver = await axios.post('http://localhost:3000/api/driver/create', value);
-          const response = addDriver.data;
-          if (response.success) {
-              toast.success(response.message, { duration: 2000 });
-              setTimeout(() => {
-                  navigate('/driver-management');
-              }, 2000); 
-          }
-          console.log(response); 
-      } catch (error) {
-          console.log(error);
+      const existingDriverId = await axios.get(`http://localhost:3000/api/driver/check?driverId=${value.driverId}`);
+      if (existingDriverId.data.exists) {
+        allErrors.push('Driver ID already exists');
       }
-      console.log(value); 
+      const existingDriverLicense = await axios.get(`http://localhost:3000/api/driver/check?driverLicense=${value.driverLicense}`);
+      if (existingDriverLicense.data.exists) {
+        allErrors.push('Driver license already exists');
+      }
+      const existingVehicleLicense = await axios.get(`http://localhost:3000/api/driver/check?vehicleLicense=${value.vehicleLicense}`);
+      if (existingVehicleLicense.data.exists) {
+        allErrors.push('Vehicle license already exists');
+      }
+      const existingPassword = await axios.get(`http://localhost:3000/api/driver/check?password=${value.password}`);
+      if (existingPassword.data.exists) {
+        allErrors.push('Password already exists');
+      }
+  
+      if (allErrors.length > 0) {
+        allErrors.forEach(error => {
+          toast.error(error);
+        });
+        return;
+      }
+  
+      const addDriver = await axios.post('http://localhost:3000/api/driver/create', value);
+      const response = addDriver.data;
+      if (response.success) {
+        toast.success(response.message, { duration: 2000 });
+        setTimeout(() => {
+          navigate('/driver-management');
+        }, 2000);
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(value);
   };
   return (
     <main>

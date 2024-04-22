@@ -130,7 +130,7 @@ export default function PromotionManagement() {
           </div>
           <div className='flex flex-col gap-2 mr-10 text-sm text-center'>
             <div><Link to="/create-promotion" className='bg-green-600 text-white hover:bg-green-700 font-semibold rounded-lg inline-block w-full p-3'>Create New Promotion</Link></div>
-            <div><Link to="/manage-feedback" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>Manage Feedbacks</Link></div>
+            <div><Link to="/feedback-management" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>Manage Feedbacks</Link></div>
           </div>
         </div>
         <PromotionTable />
