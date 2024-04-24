@@ -6,9 +6,10 @@ import SideBar from '../../components/SideBar';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
-export default function InventoryManagement() {
+export default function PromotionManagement() {
   const [inventorycount, setInventoryCount] = useState(0);
   const [expiredinventoryCount, setExpiredInventoryCount] = useState(0);
+
   const [tabletcount, setTabletInventoryCount] = useState(0);
   const [capsulecount, setCapsuleInventoryCount] = useState(0);
   const [liquidcount, setLiquidInventoryCount] = useState(0);
@@ -16,13 +17,12 @@ export default function InventoryManagement() {
 
   const [fullPrice, setfullPrice] = useState(0);
 
-
   useEffect(() => {
     fetchInventory();
   }, []);
 
   const fetchInventory = () => {
-    fetch(' ')
+    fetch('http://localhost:3000/api/inventory/read')
       .then(response => {
         if (response.ok) {
           return response.json();
