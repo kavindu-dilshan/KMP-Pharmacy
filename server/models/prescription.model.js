@@ -2,25 +2,33 @@ import mongoose from "mongoose";
 
 const PrescriptionSchema = new mongoose.Schema({
     PrescriptionID:{
-        type:String
+        type:String,
+        required: true,
+        unique: true,
     },
     firstName:{
-        type:String
+        type:String,
+        required: true,
     },
     lastName:{
-        type:String
+        type:String,
+        required: true,
     },
     age:{
-        type:Number
+        type:Number,
+        required: true,
     },
     contactNo:{
-        type:Number
+        type:Number,
+        required: true,
     },
     MedicationNames:{
-        type:String
+        type:String,
+        required: true,
     },
     units:{
-        type:Number
+        type:Number,
+        required: true,
     },
     notes:{
         type:String
@@ -31,3 +39,4 @@ const PrescriptionSchema = new mongoose.Schema({
 const Prescription = mongoose.model('Prescription', PrescriptionSchema);
 
 export default Prescription;
+
