@@ -46,6 +46,12 @@ const inventorySchema = new mongoose.Schema(
       required: true,
     },
 
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+      
+
   },
   { timestamps: true }
 );
