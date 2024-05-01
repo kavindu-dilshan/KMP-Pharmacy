@@ -46,6 +46,7 @@ import UserPaymentDetails from './pages/UserManagement/UserPaymentDetails';
 import FeedbackSubmitForm from './pages/PromotionManagement/FeedbackSubmitForm';
 import FeedbackManagement from './pages/PromotionManagement/FeedbackManagement';
 
+import OrderHistory from './pages/UserManagement/OrderHistory';
 
 export default function App() {
   return (
@@ -95,7 +96,7 @@ export default function App() {
       <Route path='/sign-in' element={<SignIn />} />
       <Route path='/sign-up' element={<SignUp />} />
       <Route path='/user-payment' element={<UserPaymentDetails />} />
-
+      <Route path='/order-history' element={<OrderHistory />} />
         
       <Route element={<PrivateRoute />}>
         <Route path='/profile' element={<Profile />} />
