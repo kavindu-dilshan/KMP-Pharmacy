@@ -19,7 +19,7 @@ import {
 import { useDispatch } from 'react-redux';
 import Footer from '../../components/Footer';
 import NavigationBar from '../../components/NavigationBar';
-
+import { Link } from 'react-router-dom';
 
 
 export default function Profile() {
@@ -199,11 +199,16 @@ export default function Profile() {
         />
         <button
           disabled={loading}
-          className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
+          className='bg-blue text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
-        
+        <Link
+          className='bg-light-blue  border-light-blue text-white p-3 rounded-lg uppercase text-center hover:opacity-95'
+          to={'/order-history'}
+        >
+          Order History
+        </Link>
       </form>
       <div className='flex justify-between mt-5'>
         <span
