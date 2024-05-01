@@ -109,24 +109,8 @@ export default function SupplyManagement() {
             </div>
           </div>
         </div>
-        {/* <div className='px-10 text-2xl font-semibold pt-5'>
-          <span className=''>Suppliers({suppliersCount})</span>
-        </div> */}
         <div className='flex items-center ml-10 justify-between mt-7'>
-          {/* <div className='flex gap-4'>
-            <div className='bg-lighter-blue border-2 border-light-blue font-medium rounded-2xl w-fit px-14 p-8'>
-              <p className='text-center text-lg'>Total Orders</p>
-              <p className='text-center text-3xl font-bold'>{suppliersCount}</p>
-            </div>
-            <div className='bg-green-100 border-2 border-green-600 font-medium rounded-2xl w-fit px-14 p-8'>
-              <p className='text-center text-lg'>Active Orders</p>
-              <p className='text-center text-3xl font-bold'>{activeSuppliersCount}</p>
-            </div>
-            <div className='bg-red-100 border-2 border-red-600 font-medium rounded-2xl w-fit px-14 p-8'>
-              <p className='text-center text-lg'>Pending Orders</p>
-              <p className='text-center text-3xl font-bold'>{inactiveSuppliersCount}</p>
-            </div>
-          </div> */}
+
           <div className='flex gap-3'>
           <div className='flex  gap-2 mr-10 text-sm text-center'>
             <div className='text-2xl font-semibold pt-1 p-3 w-fit'>Suppliers({suppliersCount})</div>

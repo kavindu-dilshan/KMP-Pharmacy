@@ -2,9 +2,12 @@
 
 <p><a  href="https://github.com/kavindu-dilshan"><img  src="https://skillicons.dev/icons?i=mongo,express,react,nodejs,vite,redux,tailwind,vscode,github"  width=350></a></p>
 
-This repository contains the source code for a Pharmacy Management System web application developed using the MERN (MongoDB, Express.js, React, Node.js) stack. The project utilizes Vite as the local development server.<br>
+This repository contains the source code for a Pharmacy Management System web application developed using the MERN (MongoDB, Express.js, React, Node.js) stack. The project utilizes Vite as the local development server.
 
 <br>
+
+<img src="https://firebasestorage.googleapis.com/v0/b/images-for-projects.appspot.com/o/KMP%20Pharmacy%2FKMP-Pharmacy-Home.png?alt=media&token=1c3d22ce-c6ac-437b-bf61-49a73fb645b6" alt="KMP-Pharmacy-Home">
+
 
 ## Table of Contents
 

@@ -24,16 +24,23 @@ export default function DriverUpdateForm() {
     });
 
     useEffect(() => {
-      axios.get(`http://localhost:3000/api/driver/get/${id}`)
-      .then(result => {
-          const driver = result.data.driver;
-          setDriverData(driver);
-
-          console.log(driver);
-      })
-      .catch(err => console.log(err));
+      getdriverByID();
   }, [id]);
 
+  const getdriverByID = async () =>{
+
+    try{
+      const result = await axios.get(`http://localhost:3000/api/driver/get/${id}`)
+      const driver = result.data.driver;
+        setDriverData(driver);
+
+        console.log(driver);
+     
+    }catch(error) {
+      console.log(error);
+    }
+
+  }
   
   const [errors, setErrors] = useState({
     driverId:'',

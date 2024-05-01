@@ -2,10 +2,10 @@ import Inventory from "../models/inventory.model.js"
 
 const addInventoryItem = async (req, res) => {
     try {
-        const {Mname, Mprice, Mquantity, expirAt, manuAt, storageCondition, type,Msupplier,status} = req.body
+        const {Mname, Mprice, Mquantity, expirAt, manuAt, storageCondition, type,Msupplier,imageUrl,status} = req.body
         
         const newInventory = new Inventory({
-            Mname, Mprice, Mquantity, expirAt, manuAt, storageCondition, type,Msupplier,status
+            Mname, Mprice, Mquantity, expirAt, manuAt, storageCondition, type,Msupplier,imageUrl,status
         })
         await newInventory.save()
         res.status(200).json({success:true, message:'Item added to the inventory!', newInventory})
