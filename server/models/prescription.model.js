@@ -32,7 +32,10 @@ const PrescriptionSchema = new mongoose.Schema({
     },
     notes:{
         type:String
-    }
+    },
+    image: {
+        type: String,
+      },
 
 }, {timestamps: true});
 

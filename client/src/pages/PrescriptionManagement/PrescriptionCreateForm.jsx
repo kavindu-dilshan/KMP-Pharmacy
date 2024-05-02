@@ -49,7 +49,7 @@ export default function PrescriptionCreateForm() {
             <SideBar />
             <div className='flex-1'>
                 <div className='bg-paleblue justify-between flex px-10 py-8'>
-                    <h1 className='text-4xl font-bold text-blue'>Prescription Form</h1>
+                    <h1 className='text-4xl font-bold text-blue'>Add New Prescription Form</h1>
                     <div className='flex gap-2'>
                         <img className='w-12 h-12 border-2 border-white rounded-full' src="https://avatars.githubusercontent.com/u/130960790?s=96&v=4" alt="tania andrew" />
                         <div className="flex w-full flex-col gap-0.5">

@@ -47,6 +47,7 @@ import FeedbackSubmitForm from './pages/PromotionManagement/FeedbackSubmitForm';
 import FeedbackManagement from './pages/PromotionManagement/FeedbackManagement';
 
 import OrderHistory from './pages/UserManagement/OrderHistory';
+import Prescriptionform from './pages/PrescriptionManagement/PrescriptionForm';
 
 export default function App() {
   return (
@@ -61,6 +62,8 @@ export default function App() {
       <Route path='/create-promotion' element={<PromotionCreateForm />} />
       <Route path='/update-promotion/:id' element={<PromotionUpdateForm />} />
       <Route path='/promotions' element={<PromotionPage />} />
+
+      <Route path='/prescriptionform' element={<Prescriptionform />} />
 
       <Route path="/supplier-management" element={<SupplyManagement/>} />
       <Route path="/create-supplier" element={<SupplierCreateForm/>} />
