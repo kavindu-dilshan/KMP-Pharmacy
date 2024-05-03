@@ -15,12 +15,14 @@ import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreate
 import InventoryUpdateForm from './pages/InventoryManagement/InventoryUpdateForm';
 import SupplyRequestForm from './pages/InventoryManagement/SupplyRequest';
 import InventoryManagement from './pages/InventoryManagement/InventoryManagement';
+
 import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
 import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
 import PrescriptionNotification from './pages/PrescriptionManagement/PrescriptionNotifications';
 import PrescriptionManagement from './pages/PrescriptionManagement/PrescriptionManagement';
 import PrescriptionAssignForm from './pages/PrescriptionManagement/PrescriptionAssignForm';
 import PrescriptionAssignTable from './pages/PrescriptionManagement/PrescriptionAssignTable';
+import PrescriptionViewDetails from './pages/PrescriptionManagement/PrescriptionViewDetails';
 import DriverCreateForm from './pages/DeliveryManagement/DriverCreateForm';
 import DriverUpdateForm from './pages/DeliveryManagement/DriverUpdateForm';
 import DeliveryTaskcreateForm from './pages/DeliveryManagement/DeliveryTaskcreateForm';
@@ -76,7 +78,8 @@ export default function App() {
       <Route path="/prescription-assigntable/:id" element={<PrescriptionAssignTable/>} />
       <Route path="/notifications" element={<PrescriptionNotification/>} />
       <Route path='/update-prescription/:id' element={<PrescriptionUpdateForm />} /> 
-      <Route path='/prescription-assignform/:id' element={<PrescriptionAssignForm />} /> 
+      <Route path='/prescription-assignform/:id' element={<PrescriptionAssignForm />} />
+      <Route path='/prescription-view-details/:id' element={<PrescriptionViewDetails />} /> 
 
       <Route path="/inventory-management" element={<InventoryManagement/>} />
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
