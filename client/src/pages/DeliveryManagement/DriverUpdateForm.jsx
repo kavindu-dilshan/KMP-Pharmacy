@@ -179,7 +179,7 @@ const handleSubmit = (e) => {
 
                           <div className='flex flex-col gap-1 flex-1'>
                             <label className='font-semibold text-black'>Contact Number</label>
-                            <input type="text" placeholder='Enter the number without the initial zero' id="contactNo" name="contactNo" value={driverData.contactNo} onChange={handleChange}className='border-2 border-gray outline-none rounded-md p-2 mb-4' maxLength='9' minLength='9' required/>
+                            <input type="text" placeholder='Enter the number without the initial zero' id="contactNo" name="contactNo" pattern='[0-9]{9}'value={driverData.contactNo} onChange={handleChange}className='border-2 border-gray outline-none rounded-md p-2 mb-4' maxLength='9' minLength='9' required/>
 
                             <label className='font-semibold text-black'>Vehicle License</label>
                             <input type="text" placeholder='Enter vehicle license number' id="vehicleLicense" name="vehicleLicense" value={driverData.vehicleLicense} onChange={handleChange}className='border-2 border-gray outline-none rounded-md p-2 mb-4' required/>
