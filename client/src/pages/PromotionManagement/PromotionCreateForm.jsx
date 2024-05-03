@@ -29,7 +29,7 @@ export default function PromotionCreateForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const addPromotion = await axios.post('http://localhost:3000/api/create', value);
+            const addPromotion = await axios.post('http://localhost:3000/api/promotion/create', value);
             const response = addPromotion.data;
             if (response.success) {
                 toast.success(response.message, {duration: 4000});
