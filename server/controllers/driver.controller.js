@@ -110,24 +110,65 @@ const checkDataExists = async (req, res) => {
   }
 };
 
-const signIn = async (req, res) => {
-    try {
-        const { driverId, password } = req.body;
-        const driver = await Driver.findOne({ driverId });
 
-        if (!driver) {
-            return res.status(404).json({ success: false, message: 'Driver not found!' });
-        }
-
-        if (driver.password !== password) {
-            return res.status(401).json({ success: false, message: 'Incorrect password!' });
-        }
-        const token = jwt.sign({ id:driver._id}, process.env.JWT_SECRET);
-        res.cookie('access_token', token, { httpOnly:true }).status(200).json(driver)
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ success: false, message: 'Internal Server Error' });
-    }
+const signIn = async (req, res, next) =>   {
+  const { driverId, password } = req.body;
+  try {
+    const validUser = await Driver.findOne({ driverId });
+    if (!validUser) return next(errorHandler(404, 'Driver not found!'));
+    const validPassword = validUser.password;
+    if (!validPassword) return next(errorHandler(401, 'Wrong credentials!'));
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+    const { password: pass, ...rest } = validUser._doc;
+    res
+      .cookie('access_token', token, { httpOnly: true })
+      .status(200)
+      .json(rest);
+  } catch (error) {
+    next(error);
+  }
 };
 
-export { createDriver, getDriver, updateDriver, deleteDriver, getUpdateDriver,checkDataExists, signIn }
+  const updateDriverPro = async (req, res, next) => {
+    if (req.user.id !== req.params.id)
+    return next(errorHandler(401, 'You can only update your own account!'));
+    try {
+      if (req.body.password) {
+        req.body.password = req.body.password;
+      }
+  
+      const updatedDriver = await Driver.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: {
+            driverId: req.body.driverId,
+            driverName: req.body.driverName,
+            driverLicense: req.body.driverLicense,
+            vehicleModel: req.body.vehicleModel,
+            availabilty: req.body.availabilty,
+            contactNo: req.body.contactNo,
+            vehicleLicense: req.body.vehicleLicense,
+            password: req.body.password,
+          },
+        },
+        { new: true }
+      );
+  
+      const { password, ...rest } = updatedDriver._doc;
+  
+      res.status(200).json(rest);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  const signOut = async (req, res, next) => {
+    try {
+      res.clearCookie('access_token');
+      res.status(200).json('User has been logged out!');
+    } catch (error) {
+      next(error);
+    }
+  };
+
+export { createDriver, getDriver, updateDriver, deleteDriver, getUpdateDriver,checkDataExists, signIn, updateDriverPro,signOut}
