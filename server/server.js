@@ -30,7 +30,7 @@ app.use(cors({
 
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
-app.use('/api', promotionRouter)
+app.use('/api/promotion', promotionRouter)
 app.use('/api/employee', employeeRouter)
 app.use('/api/supplier', supplierRouter)
 app.use('/api/inventory', inventoryRouter)

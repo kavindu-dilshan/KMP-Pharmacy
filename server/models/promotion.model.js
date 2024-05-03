@@ -2,31 +2,42 @@ import mongoose from "mongoose";
 
 const promotionSchema = new mongoose.Schema({
     promotionID:{
-        type:String
+        type:String,
+        required:true,
+        unique:true,
     },
     couponCode:{
-        type:String
+        type:String,
+        required:true,
+        unique:true,
     },
     couponPrice:{
-        type:String
+        type:String,
+        required:true,
     },
     totalAmount:{
-        type:String
+        type:String,
+        required:true,
     },
     type:{
-        type:String
+        type:String,
+        required:true,
     },
     createdAt:{
-        type:Date
+        type:Date,
+        required:true,
     },
     expiredAt:{
-        type:Date
+        type:Date,
+        required:true,
     },
     status:{
-        type:String
+        type:String,
+        required:true,
     },
     description:{
-        type:String
+        type:String,
+        required:true,
     }
 },{timestamps:true})
 

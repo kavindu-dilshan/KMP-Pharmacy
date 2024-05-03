@@ -16,12 +16,12 @@ function PromotionTable() {
 
     const fetchData = async () => {
         try {
-            const fetchPromotion = await axios.get('http://localhost:3000/api/read');
+            const fetchPromotion = await axios.get('http://localhost:3000/api/promotion/read');
             const response = fetchPromotion.data;
             const updatedPromotions = response.promotion.map(promo => {
                 if (new Date(promo.expiredAt) < new Date()) {
                     promo.status = 'Inactive';
-                    axios.put(`http://localhost:3000/api/update/${promo._id}`, { status: 'Inactive' })
+                    axios.put(`http://localhost:3000/api/promotion/update/${promo._id}`, { status: 'Inactive' })
                     .then(response => {
                         console.log('Promotion status updated:', response);
                     })
@@ -61,7 +61,7 @@ function PromotionTable() {
 
     const handleDeleteConfirmed = async () => {
         try {
-            await axios.delete(`http://localhost:3000/api/delete/${deleteId}`);
+            await axios.delete(`http://localhost:3000/api/promotion/delete/${deleteId}`);
             setData(prevState => ({
                 ...prevState,
                 promotion: prevState.promotion.filter(promo => promo._id !== deleteId)
