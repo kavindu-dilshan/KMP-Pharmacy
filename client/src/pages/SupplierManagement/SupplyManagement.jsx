@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, React } from 'react';
 import SupplierTable from './SupplierTable';
 import { Link } from 'react-router-dom';
 import { MdDownload } from 'react-icons/md';
+import NotificationBell from '../../components/NotificationBell';
 import SideBar from '../../components/SideBar';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -94,6 +95,7 @@ export default function SupplyManagement() {
         <div className='bg-paleblue justify-between flex px-10 py-10'>
           <h1 className='text-4xl font-bold text-blue'>Supplier Management Dashboard</h1>
           <div className='flex gap-6'>
+          <NotificationBell />
             <button onClick={generateReport} className="bg-white hover:bg-light-blue hover:text-white text-black border-2 border-light-blue font-semibold transition-all py-2 px-4 rounded-lg inline-flex items-center">
               <MdDownload className='text-2xl mr-2' />
               <span>Download Report</span>

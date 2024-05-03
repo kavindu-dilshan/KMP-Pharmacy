@@ -13,7 +13,7 @@ import SupplierUpdateForm from './pages/SupplierManagement/SupplierUpdateForm';
 import InventoryUserPage from './pages/InventoryManagement/InventoryUserPageView';
 import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreateForm';
 import InventoryUpdateForm from './pages/InventoryManagement/InventoryUpdateForm';
-import SupplyRequestForm from './pages/InventoryManagement/SupplyRequest';
+import SupplyRequestForm from './pages/InventoryManagement/SupplyRequestForm';
 import InventoryManagement from './pages/InventoryManagement/InventoryManagement';
 
 import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
@@ -49,7 +49,12 @@ import FeedbackSubmitForm from './pages/PromotionManagement/FeedbackSubmitForm';
 import FeedbackManagement from './pages/PromotionManagement/FeedbackManagement';
 
 import OrderHistory from './pages/UserManagement/OrderHistory';
+
 import Prescriptionform from './pages/PrescriptionManagement/PrescriptionForm';
+
+import DriverProfile from './pages/DeliveryManagement/DriverProfile';
+import DriverTask from './pages/DeliveryManagement/DriverTask';
+
 
 export default function App() {
   return (
@@ -96,6 +101,8 @@ export default function App() {
       <Route path='/driver-update/:id' element={<DriverUpdateForm />} />
       <Route path='/drivers' element={<DriverTable />} />
       <Route path='/driver-signin' element={<DriverSignIn />} />
+      <Route path='/driver-profile' element={<DriverProfile />} />
+      <Route path='/driver-task' element={<DriverTask />} />
 
       <Route path="/user-table" element={<UserTable />} />
       <Route path="/user-management" element={<UserManagement />} />

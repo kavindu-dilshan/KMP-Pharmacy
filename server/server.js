@@ -13,6 +13,8 @@ import feedbackRouter from './routes/feedback.route.js'
 import prescriptionRouter from './routes/prescription.route.js'
 import driverRouter from './routes/driver.route.js'
 import paymentRouter from './routes/payment.route.js'
+import supplyRequestRouter from './routes/SupplyRequest.route.js'
+import notificationRouter from './routes/notififcation.route.js'
 
 const app = express()
 dbCon()
@@ -20,8 +22,12 @@ dbCon()
 const __dirname = path.resolve();
 
 app.use(express.json())
-app.use(cors())
 app.use(cookieParser());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
+
 
 
 app.use('/api/user', userRouter);
@@ -34,6 +40,10 @@ app.use('/api/feedback', feedbackRouter)
 app.use('/api/prescription', prescriptionRouter)
 app.use('/api/driver', driverRouter)
 app.use('/api/payment', paymentRouter)
+
+app.use('/api/notification',notificationRouter);
+app.use('/api/supplyRequest', supplyRequestRouter);
+
 
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
