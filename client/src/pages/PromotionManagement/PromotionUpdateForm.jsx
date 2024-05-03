@@ -22,7 +22,7 @@ export default function PromotionUpdateForm() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/get/${id}`)
+        axios.get(`http://localhost:3000/api/promotion/get/${id}`)
         .then(result => {
             const promotion = result.data.promotion;
 
@@ -55,7 +55,7 @@ export default function PromotionUpdateForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.put(`http://localhost:3000/api/update/${id}`, promotionData)
+        axios.put(`http://localhost:3000/api/promotion/update/${id}`, promotionData)
         .then(() => {
             toast.success('Promotion updated successfully!');
             setTimeout(() => {

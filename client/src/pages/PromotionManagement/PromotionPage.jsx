@@ -20,7 +20,7 @@ export default function PromotionPage() {
   }, []);
 
   const fetchPromotions = () => {
-    fetch('http://localhost:3000/api/read')
+    fetch('http://localhost:3000/api/promotion/read')
       .then(response => {
         if (response.ok) {
           return response.json();
