@@ -1,4 +1,5 @@
 import User from '../models/user.model.js';
+import Employee from '../models/employee.model.js';
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
@@ -32,6 +33,27 @@ export const signin = async (req, res, next) => {
     next(error);
   }
 };
+
+export const signinEmp = async (req, res, next) => {
+  const { email, NIC } = req.body;
+  try {
+    const validUser = await Employee.findOne({ email });
+    if (!validUser) return next(errorHandler(404, 'User not found!'));
+    
+    // Check if the NIC matches
+    if (NIC !== validUser.NIC.toString()) return next(errorHandler(401, 'Wrong credentials!'));
+
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+    const { password, ...rest } = validUser._doc; // Remove password from response
+    res
+      .cookie('access_token', token, { httpOnly: true })
+      .status(200)
+      .json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 export const google = async (req, res, next) => {
   try {
