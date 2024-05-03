@@ -17,7 +17,7 @@ export default function PromotionManagement() {
   }, []);
 
   const fetchPromotions = () => {
-    fetch('http://localhost:3000/api/read')
+    fetch('http://localhost:3000/api/promotion/read')
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -48,7 +48,7 @@ export default function PromotionManagement() {
 };
 
   const generateReport = () => {
-    fetch('http://localhost:3000/api/read')
+    fetch('http://localhost:3000/api/promotion/read')
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -59,7 +59,7 @@ export default function PromotionManagement() {
       })
       .then(data => {
         const promotions = data.promotion;
-       
+        
         const doc = new jsPDF();
 
         const tableHeader = [['Promotion ID', 'Coupon Code', 'Coupon Price', 'Total Amount', 'Type', 'Created At', 'Expired At', 'Status']];

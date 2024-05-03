@@ -24,11 +24,11 @@ const PrescriptionSchema = new mongoose.Schema({
     },
     MedicationNames:{
         type:String,
-        required: true,
+       required: true,
     },
     units:{
         type:Number,
-        required: true,
+       required: true,
     },
     notes:{
         type:String

@@ -7,9 +7,9 @@ import mainlogo from '../assets/Main-Logo.svg';
 import { Link } from 'react-router-dom';
 
 export default function NavigationBar() {
-    //user management
+   
     const { currentUser } = useSelector((state) => state.user);
-    //here
+    
     const [isOpen , setIsOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
 
@@ -58,31 +58,23 @@ export default function NavigationBar() {
                         <div class="absolute z-10 mt-2 w-56 rounded-md shadow-lg bg-blue" role="menu">
                             <div className="" role="none">
                                 <Link to='/' className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Home</Link>
-                                <Link to='/prescriptionform'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Upload Prescription</Link>
+                                <Link to='/upload'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Upload Prescription</Link>
                                 <Link to="/feedback" className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Feedback</Link>
                                 <Link to='/promotions'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Promotions</Link>
                                 <Link to='/inventory-user'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Drug Catalog</Link>
                                 <Link to='/driver-signin'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Driver Login</Link>
-                                <Link to='/employee-sign-in'  className="block px-4 py-2 text-sm hover:bg-dark-blue rounded-md" role="menuitem">Admin Login</Link>
+                                <Link to='/admin-dashboard'  className="block px-4 py-2 text-sm hover:bg-dark-blue rounded-md" role="menuitem">Admin Login</Link>
                             </div>
                         </div>
                     )}
                 </div>
                 <div className='flex'>
-                    {/* user manager */}
-                <Link to={'/profile'}>
-                {currentUser ? (
-                        <img className='rounded-full h-9 w-9 object-cover' src={currentUser.avatar} alt='profile' />
-                    ) : (
-                <button type='submit' className='bg-white text-dark-blue rounded-md p-2 px-6 flex text-sm ml-2
-                 hover:bg-slate-100 transition-all'>Login</button>)}
-                </Link>
-                {!currentUser && (
-    <Link to={'/sign-up'}>
-        <button type='submit' className='bg-green-600 text-white rounded-md p-2 px-6 flex text-sm ml-6 hover:bg-green-700 transition-all'>Register</button>
-    </Link>
-)}
-                </div>
+                <Link to={'/driver-profile'}>
+                        {currentUser && (
+                            <img src="https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-848.jpg" className='rounded-full h-9 w-9 object-cover'  alt='profile' />
+                        )}
+                </Link>        
+                    </div>
             </div>
         </div>
     </div>

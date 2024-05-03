@@ -13,14 +13,16 @@ import SupplierUpdateForm from './pages/SupplierManagement/SupplierUpdateForm';
 import InventoryUserPage from './pages/InventoryManagement/InventoryUserPageView';
 import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreateForm';
 import InventoryUpdateForm from './pages/InventoryManagement/InventoryUpdateForm';
-import SupplyRequestForm from './pages/InventoryManagement/SupplyRequest';
+import SupplyRequestForm from './pages/InventoryManagement/SupplyRequestForm';
 import InventoryManagement from './pages/InventoryManagement/InventoryManagement';
+
 import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
 import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
 import PrescriptionNotification from './pages/PrescriptionManagement/PrescriptionNotifications';
 import PrescriptionManagement from './pages/PrescriptionManagement/PrescriptionManagement';
 import PrescriptionAssignForm from './pages/PrescriptionManagement/PrescriptionAssignForm';
 import PrescriptionAssignTable from './pages/PrescriptionManagement/PrescriptionAssignTable';
+import PrescriptionViewDetails from './pages/PrescriptionManagement/PrescriptionViewDetails';
 import DriverCreateForm from './pages/DeliveryManagement/DriverCreateForm';
 import DriverUpdateForm from './pages/DeliveryManagement/DriverUpdateForm';
 import DeliveryTaskcreateForm from './pages/DeliveryManagement/DeliveryTaskcreateForm';
@@ -46,6 +48,13 @@ import UserPaymentDetails from './pages/UserManagement/UserPaymentDetails';
 import FeedbackSubmitForm from './pages/PromotionManagement/FeedbackSubmitForm';
 import FeedbackManagement from './pages/PromotionManagement/FeedbackManagement';
 
+import OrderHistory from './pages/UserManagement/OrderHistory';
+
+import Prescriptionform from './pages/PrescriptionManagement/PrescriptionForm';
+
+import DriverProfile from './pages/DeliveryManagement/DriverProfile';
+import DriverTask from './pages/DeliveryManagement/DriverTask';
+
 
 export default function App() {
   return (
@@ -61,6 +70,8 @@ export default function App() {
       <Route path='/update-promotion/:id' element={<PromotionUpdateForm />} />
       <Route path='/promotions' element={<PromotionPage />} />
 
+      <Route path='/prescriptionform' element={<Prescriptionform />} />
+
       <Route path="/supplier-management" element={<SupplyManagement/>} />
       <Route path="/create-supplier" element={<SupplierCreateForm/>} />
       <Route path='/update-supplier/:id' element={<SupplierUpdateForm />} />     
@@ -72,7 +83,8 @@ export default function App() {
       <Route path="/prescription-assigntable/:id" element={<PrescriptionAssignTable/>} />
       <Route path="/notifications" element={<PrescriptionNotification/>} />
       <Route path='/update-prescription/:id' element={<PrescriptionUpdateForm />} /> 
-      <Route path='/prescription-assignform/:id' element={<PrescriptionAssignForm />} /> 
+      <Route path='/prescription-assignform/:id' element={<PrescriptionAssignForm />} />
+      <Route path='/prescription-view-details/:id' element={<PrescriptionViewDetails />} /> 
 
       <Route path="/inventory-management" element={<InventoryManagement/>} />
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
@@ -89,13 +101,15 @@ export default function App() {
       <Route path='/driver-update/:id' element={<DriverUpdateForm />} />
       <Route path='/drivers' element={<DriverTable />} />
       <Route path='/driver-signin' element={<DriverSignIn />} />
+      <Route path='/driver-profile' element={<DriverProfile />} />
+      <Route path='/driver-task' element={<DriverTask />} />
 
       <Route path="/user-table" element={<UserTable />} />
       <Route path="/user-management" element={<UserManagement />} />
       <Route path='/sign-in' element={<SignIn />} />
       <Route path='/sign-up' element={<SignUp />} />
       <Route path='/user-payment' element={<UserPaymentDetails />} />
-
+      <Route path='/order-history' element={<OrderHistory />} />
         
       <Route element={<PrivateRoute />}>
         <Route path='/profile' element={<Profile />} />

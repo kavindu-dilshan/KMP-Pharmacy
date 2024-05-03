@@ -115,6 +115,7 @@ function PrescriptionTable() {
                         <td className="border-b-2 border-b-blue px-4 py-2">{elem.units}</td>
                         <td className="border-b-2 border-b-blue px-4 py-2">
                             <div className='flex text-sm px-full'>
+                            <Link to ={`/prescription-view-details/${elem._id}`}><button  className='bg-yellow-600 text-white hover:bg-yellow-700 transition-all rounded  px-4 py-1 mr-2'>View</button></Link>
                                 <Link to={`/update-prescription/${elem._id}`}><button className='bg-green-600 text-white hover:bg-green-700 transition-all rounded  px-4 py-1'>Update</button></Link>
                                 <button onClick={() => handleDeleteConfirmation(elem._id)} className='bg-red-600 text-white hover:bg-red-700 transition-all rounded  px-4 py-1 ml-2'>Delete</button>
                             </div>
