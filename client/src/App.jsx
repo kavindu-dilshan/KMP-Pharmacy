@@ -13,7 +13,7 @@ import SupplierUpdateForm from './pages/SupplierManagement/SupplierUpdateForm';
 import InventoryUserPage from './pages/InventoryManagement/InventoryUserPageView';
 import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreateForm';
 import InventoryUpdateForm from './pages/InventoryManagement/InventoryUpdateForm';
-import SupplyRequestForm from './pages/InventoryManagement/SupplyRequest';
+import SupplyRequestForm from './pages/InventoryManagement/SupplyRequestForm';
 import InventoryManagement from './pages/InventoryManagement/InventoryManagement';
 import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
 import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
