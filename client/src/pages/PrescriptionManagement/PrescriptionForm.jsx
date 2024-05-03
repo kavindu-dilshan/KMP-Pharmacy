@@ -49,16 +49,8 @@ export default function PrescriptionCreateForm() {
             <SideBar />
             <div className='flex-1'>
                 <div className='bg-paleblue justify-between flex px-10 py-8'>
-                    <h1 className='text-4xl font-bold text-blue'>Add New Prescription Form</h1>
-                    <div className='flex gap-2'>
-                        <img className='w-12 h-12 border-2 border-white rounded-full' src="https://avatars.githubusercontent.com/u/130960790?s=96&v=4" alt="tania andrew" />
-                        <div className="flex w-full flex-col gap-0.5">
-                            <div className="flex items-center justify-between font-bold">
-                                <h1>Mohamed Shahmi</h1>
-                            </div>
-                            <p className='text-xs '>Prescription Manager</p>
-                        </div>
-                    </div>
+                    <h1 className='text-4xl font-bold text-blue'>Prescription Form</h1>
+                
                 </div>
                 <div className='p-10 bg-paleblue m-10 rounded-3xl max-w-4xl border-2 border-light-blue'>
                     <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
