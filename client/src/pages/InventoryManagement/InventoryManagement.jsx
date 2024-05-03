@@ -5,11 +5,11 @@ import { MdDownload, MdAdd as MdPlus } from 'react-icons/md';
 import SideBar from '../../components/SideBar';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import { BiFontSize } from 'react-icons/bi';
 
-export default function PromotionManagement() {
+export default function Inventorymanager() {
   const [inventorycount, setInventoryCount] = useState(0);
   const [expiredinventoryCount, setExpiredInventoryCount] = useState(0);
-
   const [tabletcount, setTabletInventoryCount] = useState(0);
   const [capsulecount, setCapsuleInventoryCount] = useState(0);
   const [liquidcount, setLiquidInventoryCount] = useState(0);
@@ -67,7 +67,9 @@ export default function PromotionManagement() {
     return formattedDate;
   };
 
-  const generateReport = (inventorycount) => {
+  const generateReport = () => {
+    let yPos = 150; // Define yPos here
+  
     fetch('http://localhost:3000/api/inventory/read')
       .then(response => {
         if (response.ok) {
@@ -79,13 +81,13 @@ export default function PromotionManagement() {
       })
       .then(data => {
         const items = data.inventory;
-        const numoftablets = items.filter(inventory => inventory.type === 'Tablet')
+        const numoftablets = items.filter(inventory => inventory.type === 'Tablet');
         setTabletInventoryCount(numoftablets.length);
-        const numofcapsules = items.filter(inventory => inventory.type === 'Capsule')
+        const numofcapsules = items.filter(inventory => inventory.type === 'Capsule');
         setCapsuleInventoryCount(numofcapsules.length);
-        const numofliquid = items.filter(inventory => inventory.type === 'Liquid')
+        const numofliquid = items.filter(inventory => inventory.type === 'Liquid');
         setLiquidInventoryCount(numofliquid.length);
-        const numofother = items.filter(inventory => inventory.type === 'Other')
+        const numofother = items.filter(inventory => inventory.type === 'Other');
         setOtherInventoryCount(numofother.length);
   
         const doc = new jsPDF({
@@ -94,55 +96,61 @@ export default function PromotionManagement() {
           format: "letter"
         });
   
-        const inventory = data.inventory
         const inventorySize = data.inventory.length.toString();
-        
-        const totalPrice = inventory.reduce((acc, item) => {
+  
+        const totalPrice = items.reduce((acc, item) => {
           return acc + (item.Mprice * item.Mquantity);
         }, 0);
-
-        const totalPrice1  = totalPrice.toString()
-
+  
+        const totalPrice1 = totalPrice.toFixed(2);
+  
         const margin = 40;
-
-        doc.setLineWidth(2); 
-        doc.setDrawColor(0,90,139);
-        doc.line(10, 10, 580, 10); // Top line
-        doc.line(10, 100, 580, 100); // second Top line
-        doc.line(580, 780, 580, 10); // Right line
-        doc.line(10, 780, 580, 780);// Bottom line
-        doc.line(10, 780, 10, 10); //leftlines
+  
+        doc.setLineWidth(1);
+        doc.setDrawColor(0, 90, 139);
+        doc.line(30, 30, 580, 30); // Top line
+        doc.line(30, 100, 580, 100); // second Top line
+        doc.line(580, 780, 580, 30); // Right line
+        doc.line(30, 680, 580, 680); // Bottom up line
+        doc.line(30, 780, 580, 780); // Bottom line
+        doc.line(30, 780, 30, 30); //leftlines
   
         // Title
         doc.setFontSize(30);
-        doc.text("Inventory Report", margin, 60);
+        doc.text("Inventory Report", margin, 80);
         doc.setFontSize(15);
-
-        doc.setTextColor(0, 0, 255);
-        doc.text("Total Value(Rs.):",375 ,80);
-        doc.setTextColor(0, 100, 0);
-        doc.text(totalPrice1, 490 ,80);
-        
   
-        
-        // Inventory items section  
+        doc.setTextColor(0, 0, 255);
+        doc.text("Total Value(Rs.):", 375, 80);
+        doc.setTextColor(0, 100, 0);
+        doc.text(totalPrice1, 490, 80);
+  
         doc.setFontSize(14);
         doc.setTextColor(0, 0, 255);
-        doc.text("Inventory Items", margin, 120);
+        doc.text(`Inventory Items(${inventorySize})`, margin, 130);
         doc.setTextColor(0, 0, 0);
-        doc.text("(", 140,120);
-        doc.text(inventorySize, 145,120);
-        doc.text(")", 160,120);
-        doc.setTextColor(0);
-        doc.setFontSize(12);
-        let yPos = 150;
-        items.forEach((item, index) => {
-          doc.text(`- ${item.Mname} | Price: ${item.Mprice} | Quantity: ${item.Mquantity} | Supplier: ${item.Msupplier}`, margin, yPos);
-          yPos += 30;
+
+        // Inventory items section as a table
+        const tableColumns = ["Name", "UnitPrice(Rs)", "Quantity", "Supplier"];
+        const tableData = items.map(item => [item.Mname, item.Mprice, item.Mquantity, item.Msupplier]);
+      
+        doc.autoTable({
+          startY: yPos,
+          head: [tableColumns],
+          body: tableData,
+          theme: "grid",
+          margin: { top: 10 },
+          styles: { textColor: [0, 0, 0], fontStyle: "bold" , FontSize:"12"},
+          columnStyles: {
+            0: { fontStyle: "normal" },
+            1: { fontStyle: "normal" },
+            2: { fontStyle: "normal" },
+            3: { fontStyle: "normal" }
+          }
         });
   
         // Counts section
-        yPos += 20;
+        yPos += 300;
         doc.setFontSize(14);
         doc.setTextColor(0, 0, 255);
         doc.text("Counts", margin, yPos);
@@ -176,6 +184,7 @@ export default function PromotionManagement() {
         console.error('Error generating report:', error);
       });
   };
+  
   
   
   

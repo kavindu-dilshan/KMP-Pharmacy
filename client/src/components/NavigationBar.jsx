@@ -63,7 +63,7 @@ export default function NavigationBar() {
                                 <Link to='/promotions'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Promotions</Link>
                                 <Link to='/inventory-user'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Drug Catalog</Link>
                                 <Link to='/driver-signin'  className="block px-4 py-2 text-sm hover:bg-dark-blue border-b-2" role="menuitem">Driver Login</Link>
-                                <Link to='/admin-dashboard'  className="block px-4 py-2 text-sm hover:bg-dark-blue rounded-md" role="menuitem">Admin Login</Link>
+                                <Link to='/employee-sign-in'  className="block px-4 py-2 text-sm hover:bg-dark-blue rounded-md" role="menuitem">Admin Login</Link>
                             </div>
                         </div>
                     )}

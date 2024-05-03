@@ -42,7 +42,7 @@ import PrivateRoute from './components/PrivateRoute';
 import EmployeeManagement from "./pages/EmployeeManagement/EmployeeManagement";
 import EmployeeCreateForm from "./pages/EmployeeManagement/EmployeeCreateForm";
 import EmployeeUpdateForm from "./pages/EmployeeManagement/EmployeeUpdateForm";
-
+import EmploeeLoginForm from "./pages/EmployeeManagement/EmplyeeLoginForm";
 import UserPaymentDetails from './pages/UserManagement/UserPaymentDetails';
 
 import FeedbackSubmitForm from './pages/PromotionManagement/FeedbackSubmitForm';
@@ -118,6 +118,7 @@ export default function App() {
       <Route path="/employee-management" element={<EmployeeManagement />} />
       <Route path="/create-employee" element={<EmployeeCreateForm />} />
       <Route path="/update-employee/:id" element={<EmployeeUpdateForm />} />
+      <Route path='/employee-sign-in' element={<EmploeeLoginForm />} />
     </Routes>
   </Router>
   )
