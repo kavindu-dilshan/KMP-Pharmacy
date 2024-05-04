@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 export default function NavigationBar() {
    
-    const { currentUser } = useSelector((state) => state.user);
+    const { currentDriver} = useSelector((state) => state.driver);
     
     const [isOpen , setIsOpen] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
@@ -70,7 +70,7 @@ export default function NavigationBar() {
                 </div>
                 <div className='flex'>
                 <Link to={'/driver-profile'}>
-                        {currentUser && (
+                        {currentDriver && (
                             <img src="https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-848.jpg" className='rounded-full h-9 w-9 object-cover'  alt='profile' />
                         )}
                 </Link>        

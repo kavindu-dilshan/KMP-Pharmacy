@@ -2,16 +2,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  signInStart,
-  signInSuccess,
-  signInFailure,
-} from '../../redux/user/userSlice';
+  signInDriverStart,
+  signInDriverSuccess,
+  signInDriverFailure,
+} from '../../redux/driver/driverSlice';
 import DriveNavigationBar from '../../components/DriveNavigationBar';
 import Footer from '../../components/Footer';
 
 export default function DriverSignIn() {
   const [formData, setFormData] = useState({});
-  const { loading, error } = useSelector((state) => state.user);
+  const { loading, error } = useSelector((state) => state.driver);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ export default function DriverSignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(signInStart());
+      dispatch(signInDriverStart());
       const res = await fetch('/api/driver/signin', {
         method: 'POST',
         headers: {
@@ -34,13 +34,13 @@ export default function DriverSignIn() {
       const data = await res.json();
       console.log(data);
       if (data.success === false) {
-        dispatch(signInFailure(data.message));
+        dispatch(signInDriverFailure(data.message));
         return;
       }
-      dispatch(signInSuccess(data));
+      dispatch(signInDriverSuccess(data));
       navigate('/driver-profile');
     } catch (error) {
-      dispatch(signInFailure(error.message));
+      dispatch(signInDriverFailure(error.message));
     }
   };
   return (
@@ -59,7 +59,7 @@ export default function DriverSignIn() {
         />
         <input
           type='password'
-          placeholder='password'
+          placeholder='Password'
           className='border p-3 rounded-lg'
           id='password'
           onChange={handleChange}
