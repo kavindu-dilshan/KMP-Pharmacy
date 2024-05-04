@@ -1,5 +1,6 @@
 import Driver from "../models/driver.model.js"
 import jwt from 'jsonwebtoken'
+import { errorHandler } from '../utils/error.js';
 
 const createDriver = async (req, res) => {
     try {
@@ -121,7 +122,7 @@ const signIn = async (req, res, next) =>   {
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
     const { password: pass, ...rest } = validUser._doc;
     res
-      .cookie('access_token', token, { httpOnly: true })
+      .cookie('driver_access_token', token, { httpOnly: true })
       .status(200)
       .json(rest);
   } catch (error) {
@@ -130,8 +131,8 @@ const signIn = async (req, res, next) =>   {
 };
 
   const updateDriverPro = async (req, res, next) => {
-    if (req.user.id !== req.params.id)
-    return next(errorHandler(401, 'You can only update your own account!'));
+  if (req.driver.id !== req.params.id)
+    return next(errorHandler(401, 'You can only update your own account!')); 
     try {
       if (req.body.password) {
         req.body.password = req.body.password;
@@ -164,8 +165,8 @@ const signIn = async (req, res, next) =>   {
 
   const signOut = async (req, res, next) => {
     try {
-      res.clearCookie('access_token');
-      res.status(200).json('User has been logged out!');
+      res.clearCookie('driver_access_token');
+      res.status(200).json('Driver has been logged out!');
     } catch (error) {
       next(error);
     }
