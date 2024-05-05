@@ -71,4 +71,36 @@ const getUpdatePromotion = async (req, res) => {
     }
 }
 
-export {createPromotion, getPromotion, updatePromotion, deletePromotion, getUpdatePromotion}
+const checkPromotionID = async (req, res) => {
+    const { promotionID } = req.query; 
+
+    try {
+        const existingPromotion = await Promotion.findOne({ promotionID });
+        if (existingPromotion) {
+            return res.status(200).json({ exists: true });
+        } else {
+            return res.status(200).json({ exists: false });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+
+const checkCouponCode = async (req, res) => {
+    const { couponCode } = req.query;
+
+    try {
+        const existingPromotion = await Promotion.findOne({ couponCode });
+        if (existingPromotion) {
+            return res.status(200).json({ exists: true });
+        } else {
+            return res.status(200).json({ exists: false });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+
+export {createPromotion, getPromotion, updatePromotion, deletePromotion, getUpdatePromotion, checkPromotionID, checkCouponCode}
