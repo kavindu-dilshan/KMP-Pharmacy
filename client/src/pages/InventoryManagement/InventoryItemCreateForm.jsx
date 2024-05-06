@@ -9,7 +9,7 @@
 
     export default function Inventorycreateform() {
         const navigate = useNavigate();
-        const [imageUploadError, setImageUploadError] = useState('false');
+        const [imageUploadError, setImageUploadError] = useState();
         const [files,setFiles] = useState();
         const [error, setError] = useState('');
         const [uploading,setuploading] = useState(false);
@@ -185,7 +185,9 @@
                                             {uploading ? 'Uploading...' : 'Upload'}
                                         </button>           
                                     </div>
-                                    <p className='text-red-700'>{imageUploadError && imageUploadError}</p>
+                                    {imageUploadError && <p className='text-red-700'>{imageUploadError}</p>}
+                                    {!files && <p className='text-red-700'>Please upload an image</p>}
+
 
                                 
                                     <div className=' p-2 flex items-center gap-2'>
