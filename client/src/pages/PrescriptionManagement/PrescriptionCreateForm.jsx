@@ -84,7 +84,7 @@ export default function PrescriptionCreateForm() {
 
                         <div className='flex flex-col gap-1 flex-1'>
                         <label className='font-semibold text-black'>Medication Name</label>
-                            <input type="text" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={value.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <textarea type="textarea" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={value.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
 
                             <label className='font-semibold text-black'>Units</label>
