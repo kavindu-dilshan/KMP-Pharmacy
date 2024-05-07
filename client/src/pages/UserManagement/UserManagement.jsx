@@ -4,9 +4,39 @@ import SideBar from '../../components/SideBar';
 import { MdDownload } from 'react-icons/md';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import { useState, useEffect } from 'react';
 
 export default function UserManagement() {
+
+  //------------------------------------
+
+  const [userCount, setUserCount] = useState(0);
+
+    useEffect(() => {
+      fetchUsers();
+    }, []);
+
+    const fetchUsers = () => {
+      fetch('http://localhost:3000/api/user/read')
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            console.error('Failed to fetch users:', response.statusText);
+            throw new Error('Failed to fetch users');
+          }
+        })
+        .then(data => {
+          const users = data.user;
+          setUserCount(users.length);
     
+        })
+        .catch(error => {
+          console.error('Error fetching users:', error);
+        });
+    };
+
+   //------------------------------------ 
     const generateReport = () => {
         fetch('http://localhost:3000/api/user/read')
           .then(response => {
@@ -66,9 +96,19 @@ export default function UserManagement() {
             </div>
           </div>
         </div>
+        <div className='px-10 text-2xl font-semibold pt-5'>
+          <span className=''>Registered user Count({userCount})</span>
+        </div>
+        <div className='flex items-center ml-10 justify-between mt-7'>
+          <div className='flex gap-4'>
+            <div className='bg-lighter-blue border-2 border-light-blue font-medium rounded-2xl w-fit px-14 p-8'>
+              <p className='text-center text-lg'>Registered user Count</p>
+              <p className='text-center text-3xl font-bold'>{userCount}</p>
+            </div>
+          </div>
+        </div>
         <UserTable />
         </div>
-       
     </div>
     
   )
