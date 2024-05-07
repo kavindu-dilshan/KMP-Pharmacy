@@ -119,12 +119,7 @@ export default function DriverProfile() {
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
-        <Link
-          to="/driver-task"
-          className='bg-light-blue border-dark-blue text-white p-3 rounded-lg uppercase text-center hover:opacity-95'
-        >
-          Delivery Tasks
-        </Link>
+      
       </form>
     </div>
     <p className='text-red-700 mt-5 text-center'>{error ? error : ''}</p>
