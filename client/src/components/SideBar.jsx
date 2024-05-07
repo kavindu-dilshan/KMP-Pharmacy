@@ -52,7 +52,6 @@ export default function SideBar() {
     submenuItems: [
       { title: "Prescription form", path: '/create-prescription'},
       { title: "Assign page of Employees", path: '/prescription-assign' },
-      { title: "Notifications", path: '/notifications'},
     ],
   },
   {

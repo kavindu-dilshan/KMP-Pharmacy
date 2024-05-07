@@ -18,7 +18,6 @@ import InventoryManagement from './pages/InventoryManagement/InventoryManagement
 
 import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
 import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
-import PrescriptionNotification from './pages/PrescriptionManagement/PrescriptionNotifications';
 import PrescriptionManagement from './pages/PrescriptionManagement/PrescriptionManagement';
 import PrescriptionAssignForm from './pages/PrescriptionManagement/PrescriptionAssignForm';
 import PrescriptionAssignTable from './pages/PrescriptionManagement/PrescriptionAssignTable';
@@ -81,7 +80,6 @@ export default function App() {
       <Route path="/prescription-management" element={<PrescriptionManagement/>} />
       <Route path="/prescription-assign" element={<PrescriptionAssign/>} />
       <Route path="/prescription-assigntable/:id" element={<PrescriptionAssignTable/>} />
-      <Route path="/notifications" element={<PrescriptionNotification/>} />
       <Route path='/update-prescription/:id' element={<PrescriptionUpdateForm />} /> 
       <Route path='/prescription-assignform/:id' element={<PrescriptionAssignForm />} />
       <Route path='/prescription-view-details/:id' element={<PrescriptionViewDetails />} /> 
