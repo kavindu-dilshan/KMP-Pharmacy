@@ -12,6 +12,7 @@ import inventoryRouter from './routes/inventory.route.js'
 import feedbackRouter from './routes/feedback.route.js'
 import prescriptionRouter from './routes/prescription.route.js'
 import driverRouter from './routes/driver.route.js'
+import taskRouter from './routes/task.route.js'
 import paymentRouter from './routes/payment.route.js'
 import supplyRequestRouter from './routes/SupplyRequest.route.js'
 import notificationRouter from './routes/notififcation.route.js'
@@ -40,7 +41,7 @@ app.use('/api/feedback', feedbackRouter)
 app.use('/api/prescription', prescriptionRouter)
 app.use('/api/driver', driverRouter)
 app.use('/api/payment', paymentRouter)
-
+app.use('/api/task', taskRouter);
 app.use('/api/notification',notificationRouter);
 app.use('/api/supplyRequest', supplyRequestRouter);
 
