@@ -11,6 +11,7 @@ export default function InventoryUserPageView() {
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [noResults, setNoResults] = useState(false); // State to manage whether to show the "No results" message
 
   useEffect(() => {
     fetchUserData();
@@ -26,10 +27,18 @@ export default function InventoryUserPageView() {
   
         return nameMatch || priceMatch || supplierMatch;
       });
-  
+
+      if (filtered.length === 0) {
+        setNoResults(true); // If no results found, set noResults state to true
+        console.log(searchQuery)
+      } else {
+        setNoResults(false); // If results found, set noResults state to false
+      }
+
       setSearchResults(filtered);
     } else {
       setSearchResults(userview); // Show all items if no search query is entered
+      setNoResults(false); // Reset noResults state when showing all items
     }
   };
 
@@ -56,18 +65,27 @@ export default function InventoryUserPageView() {
       <div> 
         <form className='px-10 py-2 pb-7 flex justify-end' onSubmit={handleSearch}>
           <div className='relative'>
-            <input type='text' placeholder='Search' className='bg-white border-2 border-light-blue rounded-md placeholder-gray focus:outline-none w-56 p-2 pl-10' onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} />
+            <input type='text' placeholder='Search for medications' className=' text-sm bg-white border-2 border-light-blue rounded-md placeholder-gray focus:outline-none w-56 p-2 pl-10' onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} />
             <FaSearch className='text-gray absolute top-1/2 transform -translate-y-1/2 left-3' />
           </div>
           <button type='submit' className='bg-light-blue border-2 border-light-blue text-white rounded-md w-32 ml-2 hover:bg-blue hover:border-blue transition-all'>Search</button>
         </form>
       </div>
 
-      <div className="p-7 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {searchResults.map((elem, index) => (
-          <MedicineItem key={index} item={elem} />
-        ))}
-      </div>
+      {/* ternary operator */}
+
+      {noResults ? ( // Render the message only when noResults state is true
+        <div className="p-7 flex justify-center">
+          <p className='text-xl text-center text-red-400 font-bold'>Sorry, we don't have that medicine Item.We're actively working on getting the medicine you need.<br/><p className='text-green-400 uppercase'>Stay tuned for updates!</p></p>
+        </div>
+      ) : (
+        <div className="p-7 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {searchResults.map((elem, index) => (
+            <MedicineItem key={index} item={elem} />
+          ))}
+        </div>
+      )}
+
       <Footer />
     </div>
   );

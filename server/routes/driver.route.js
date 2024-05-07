@@ -4,11 +4,11 @@ import { createDriver, getDriver, updateDriver, deleteDriver, getUpdateDriver, c
 
 const routers = express.Router()
 
-routers.post('/create', createDriver)
-routers.get('/read', getDriver)
-routers.put('/update/:id', updateDriver)
-routers.delete('/delete/:id', deleteDriver)
-routers.get('/get/:id', getUpdateDriver)
+routers.post('/create', createDriver);
+routers.get('/read', getDriver);
+routers.put('/update/:id', updateDriver);
+routers.delete('/delete/:id', deleteDriver);
+routers.get('/get/:id', getUpdateDriver);
 routers.get('/check', checkDataExists);
 routers.post('/signin', signIn);
 routers.post('/updatedri/:id',verifyDriverToken,updateDriverPro);

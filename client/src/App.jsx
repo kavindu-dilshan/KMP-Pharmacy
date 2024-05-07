@@ -26,7 +26,7 @@ import DriverCreateForm from './pages/DeliveryManagement/DriverCreateForm';
 import DriverUpdateForm from './pages/DeliveryManagement/DriverUpdateForm';
 import DeliveryTaskcreateForm from './pages/DeliveryManagement/DeliveryTaskcreateForm';
 import DeliveryTaskUpdateForm from './pages/DeliveryManagement/DeliveryTaskUpdateForm';
-import DeliveryTaskTable from './pages/DeliveryManagement/DeliveryTaskTable';
+import DeliveryTaskManagement from './pages/DeliveryManagement/DeliveryTaskManagement';
 import DeliveryManagement from './pages/DeliveryManagement/DeliveryManagement';
 import DriverManagement from './pages/DeliveryManagement/DriverManagement';
 import DriverTable from './pages/DeliveryManagement/DriverTable';
@@ -91,9 +91,9 @@ export default function App() {
       <Route path='/inventory-user' element={<InventoryUserPage/>}/>
         
       <Route path='/delivery-management' element={<DeliveryManagement />} />
-      <Route path='/taskpage' element={<DeliveryTaskTable />} />
+      <Route path='/taskpage' element={<DeliveryTaskManagement />} />
       <Route path='/create-task' element={<DeliveryTaskcreateForm />} />
-      <Route path='/update-task' element={<DeliveryTaskUpdateForm />} />  
+      <Route path='/update-task/:id' element={<DeliveryTaskUpdateForm />} />  
       <Route path='/driver-management' element={<DriverManagement />} />
       <Route path='/driver-create' element={<DriverCreateForm />} />
       <Route path='/driver-update/:id' element={<DriverUpdateForm />} />

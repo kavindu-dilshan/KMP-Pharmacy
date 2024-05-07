@@ -54,7 +54,7 @@ export default function DriverCreateForm() {
   };
   
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
   
     const fieldErrors = Object.entries(errors).filter(([, error]) => error !== '');
     const allErrors = [];

@@ -23,7 +23,7 @@ export default function SideBar() {
     { title: "Delivery Management", icon: <FiTruck />, path: '/delivery-management', submenu: true,
     submenuItems: [
         { title: "Create Tasks", path: '/create-task'},
-        { title: "Task Table", path: '/taskpage' },
+        { title: "Manage Tasks", path: '/taskpage' },
         { title: "Manage Drivers", path: '/driver-management'}
       ],
  },
