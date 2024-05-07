@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../../components/OAuth';
 import NavigationBar from '../../components/NavigationBar';
 import Footer from '../../components/Footer';
+import img01 from '../../assets/Sign-up-2.png';
 
 
 export default function SignUp() {
@@ -45,8 +46,11 @@ export default function SignUp() {
   return (
     <div className='bg-paleblue'>
       <NavigationBar />
-    <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
+    <div className='p-3 w-auto mx-auto'>
+    <div className="flex flex-col lg:flex-row max-w-7xl mx-auto justify-between mt-14 mb-14 lg:gap-5">
+    <img src={img01} alt="" className="object-cover w-full lg:w-2/3 xl:w-1/2" />
+    <div className="flex flex-col justify-center lg:w-1/2">
+      <h1 className='text-3xl text-center lg:text-center font-semibold my-7 text-blue '>Sign Up</h1>
       <div className='p-10 bg-paleblue m-10 rounded-3xl max-w-4xl border-2 border-light-blue'>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
@@ -95,15 +99,18 @@ export default function SignUp() {
         <OAuth/>
       </form>
       </div>
-      <div className='flex gap-2 mt-5 mb-8'>
+      <div className='flex gap-2 ml-9 mt-5 mb-8'>
         <p>Have an account?</p>
         <Link to={'/sign-in'}>
           <span className='text-light-blue'>Sign in</span>
         </Link>
       </div>
+      </div>
+      </div>
       {error && <p className='text-red-500 mt-5'>{error}</p>}
     </div>
     <Footer />
     </div>
+    
   );
 }

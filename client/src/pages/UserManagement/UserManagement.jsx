@@ -51,6 +51,23 @@ export default function UserManagement() {
             const Users = data.user;
     
             const doc = new jsPDF();
+
+            const userCount = Users.length;
+
+            doc.setTextColor(0, 0, 255); 
+            const text = 'KMP Pharmacy User Management Report';
+            // Calculate the width of the text
+            const textWidth = doc.getTextDimensions(text).w;
+            // Calculate the x-position to center the text horizontally
+            const xPosition = (doc.internal.pageSize.getWidth() - textWidth) / 2;
+            // Draw the text at the calculated position
+            doc.text(text, xPosition, 15);
+            // Reset text color to black (default)
+            doc.setTextColor(0);
+
+            doc.setTextColor(255, 0, 0);
+            doc.text(`Total Registered Users: ${userCount}`, 15, 25);
+            doc.setTextColor(0);
     
             const tableHeader = [['User Name', 'Email', 'Phone Number', 'Address']];
     
@@ -63,6 +80,7 @@ export default function UserManagement() {
             ]);
     
             doc.autoTable({
+              startY: 35,
               head: tableHeader,
               body: tableData,
             });
