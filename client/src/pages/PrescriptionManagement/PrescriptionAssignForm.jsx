@@ -44,7 +44,7 @@ export default function PrescriptionAssignForm() {
 
     const handleStatusChange = (e) => {
         const { id } = e.target;
-        const newStatus = id === 'Emp1' ? 'Emp1' : 'Emp2';
+        const newStatus = id === 'Ashen' ? 'Ashen' : 'Kavindu';
         setPrescriptionData(prevState => ({
             ...prevState,
             status: newStatus
@@ -58,7 +58,7 @@ export default function PrescriptionAssignForm() {
         .then(() => {
             toast.success('Prescription Assigned successfully!');
             setTimeout(() => {
-                navigate('/prescription-assigntable');
+                navigate('/prescription-assign');
             });
         })
         .catch(error => {
@@ -122,12 +122,12 @@ export default function PrescriptionAssignForm() {
                         <label className='font-semibold text-black'>Assign</label>
                         <div className='flex gap-6 flex-wrap'>
                             <div className='flex gap-2'>
-                                <input type="checkbox" name="status" id="Emp1" checked={prescriptionData.status === 'Emp1'} onChange={handleStatusChange} className='w-5'/>
-                                <span>Emp1</span>
+                                <input type="checkbox" name="status" id="Ashen" checked={prescriptionData.status === 'Ashen'} onChange={handleStatusChange} className='w-5'/>
+                                <span>Ashen</span>
                             </div>
                             <div className='flex gap-2'>
-                                <input type="checkbox" name="status" id="Emp2" checked={prescriptionData.status === 'Emp2'} onChange={handleStatusChange} className='w-5'/>
-                                <span>Emp2</span>
+                                <input type="checkbox" name="status" id="Kavindu" checked={prescriptionData.status === 'Kavindu'} onChange={handleStatusChange} className='w-5'/>
+                                <span>Kavindu</span>
                             </div>
                         </div>  
                     </div>

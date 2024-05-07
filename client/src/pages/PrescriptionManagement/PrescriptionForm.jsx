@@ -1,9 +1,8 @@
 
-import React, { useState } from 'react';
+import {React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import SideBar from '../../components/SideBar';
 
 export default function PrescriptionCreateForm() {
     const navigate = useNavigate();
@@ -27,26 +26,28 @@ export default function PrescriptionCreateForm() {
     };    
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const addPrescription = await axios.post('http://localhost:3000/api/prescription/create', value);
-            const response = addPrescription.data;
-            if (response.success) {
-                toast.success(response.message, {duration: 4000});
-                setTimeout(() => {
-                    navigate('/Prescription-management');
-                });
-            }
-            console.log(response);
-        } catch (error) {
-            console.log(error);
+    e.preventDefault();
+    try {
+        const addPrescription = await axios.post('http://localhost:3000/api/prescription/create', value);
+        const response = addPrescription.data;
+        if (response.success) {
+            console.log(response.message);
+            toast.success(response.message, { duration: 4000 });
+
+            setTimeout(() => {
+                navigate('/payment'); //payment page needed here  for customer to proceed with payment
+            });
         }
-        console.log(value);
-    };
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+    console.log(value);
+};
+
 
     return (
-        <div className='flex'>
-            <SideBar />
+        <div className='flex justify-center'>
             <div className='flex-1'>
                 <div className='bg-paleblue justify-between flex px-10 py-8'>
                     <h1 className='text-4xl font-bold text-blue'>Prescription Form</h1>
@@ -76,7 +77,7 @@ export default function PrescriptionCreateForm() {
 
                         <div className='flex flex-col gap-1 flex-1'>
                         <label className='font-semibold text-black'>Medication Name</label>
-                            <input type="text" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={value.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
+                            <textarea type="textarea" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={value.MedicationNames} onChange={handleChange} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' required/>
 
 
                             <label className='font-semibold text-black'>Units</label>
