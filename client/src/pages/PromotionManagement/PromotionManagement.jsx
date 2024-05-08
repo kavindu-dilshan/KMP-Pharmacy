@@ -47,47 +47,82 @@ export default function PromotionManagement() {
     return formattedDate;
 };
 
-  const generateReport = () => {
-    fetch('http://localhost:3000/api/promotion/read')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          console.error('Failed to generate report:', response.statusText);
-          throw new Error('Failed to generate report');
-        }
-      })
-      .then(data => {
-        const promotions = data.promotion;
-        
-        const doc = new jsPDF();
+const generateReport = () => {
+  fetch('http://localhost:3000/api/promotion/read')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error('Failed to generate report:', response.statusText);
+        throw new Error('Failed to generate report');
+      }
+    })
+    .then((data) => {
+      const promotions = data.promotion;
 
-        const tableHeader = [['Promotion ID', 'Coupon Code', 'Coupon Price', 'Total Amount', 'Type', 'Created At', 'Expired At', 'Status']];
+      const doc = new jsPDF();
 
-        const tableData = promotions.map(promotion => [
-          promotion.promotionID,
-          promotion.couponCode,
-          promotion.couponPrice,
-          promotion.totalAmount,
-          promotion.type,
-          formatDate(promotion.createdAt),
-          formatDate(promotion.expiredAt),
-          promotion.status
-        ]);
+      doc.addImage('./logo.png', 'PNG', 14, 10, 43, 14);
 
-        doc.autoTable({
-          head: tableHeader,
-          body: tableData,
-        });
+      doc.setFontSize(10);
+      doc.text('159/5, Horana Road, Kottawa.', 14, 30);
+      doc.text('Email: sales@kmp.lk', 14, 35);
+      doc.text('Phone: 011-5656994', 14, 40);
 
-        doc.save('Promotion Management Report.pdf');
-      })
-      .catch(error => {
-        console.error('Error generating report:', error);
+      doc.line(14, 45, 196, 45);
+
+      doc.setFontSize(14);
+      doc.text('Promotion Management Report', 14, 55);
+
+      const tableHeader = [
+        [
+          'Promotion ID',
+          'Coupon Code',
+          'Coupon Price',
+          'Total Amount',
+          'Type',
+          'Created At',
+          'Expired At',
+          'Status',
+        ],
+      ];
+
+      const tableData = promotions.map((promotion) => [
+        promotion.promotionID,
+        promotion.couponCode,
+        promotion.couponPrice,
+        promotion.totalAmount,
+        promotion.type,
+        formatDate(promotion.createdAt),
+        formatDate(promotion.expiredAt),
+        promotion.status,
+      ]);
+
+      doc.autoTable({
+        startY: 60,
+        head: tableHeader,
+        body: tableData,
+        styles: {
+          lineColor: [189, 189, 189], 
+          lineWidth: 0.1,
+        },
+        headStyles: {
+          lineWidth: 0, 
+          fillColor: [0, 128, 102], 
+          textColor: [255, 255, 255], 
+        },
+        alternateRowStyles: {
+          fillColor: [240, 240, 240],
+        },
       });
-  };
-  
 
+      doc.save('Promotion Management Report.pdf');
+    })
+    .catch((error) => {
+      console.error('Error generating report:', error);
+    });
+};
+  
   return (
     <div className='flex'>
       <SideBar />
