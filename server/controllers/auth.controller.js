@@ -54,6 +54,15 @@ export const signinEmp = async (req, res, next) => {
   }
 };
 
+export const signoutEmp = async (req, res, next) => {
+  try {
+    res.clearCookie('access_token');
+    res.status(200).json('Employee has been logged out!');
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 export const google = async (req, res, next) => {
   try {
