@@ -186,10 +186,10 @@ export default function SupplierCreateForm() {
                             />
                             {errors.supplierID && <span className="text-red text-xs">{errors.supplierID}</span>}
 
-                            <label className='font-semibold text-black'>First Name</label>
+                            <label className='font-semibold text-black'>Supplier</label>
                             <input 
                                 type="text" 
-                                placeholder='Enter First Name' 
+                                placeholder='Enter Supplier Name' 
                                 id="firstName" 
                                 name="firstName" 
                                 value={value.firstName} 
@@ -199,10 +199,10 @@ export default function SupplierCreateForm() {
                             />
                             {errors.firstName && <span className="text-red text-xs">{errors.firstName}</span>}
 
-                            <label className='font-semibold text-black'>Last Name</label>
+                            <label className='font-semibold text-black'>Contact Person Name</label>
                             <input 
                                 type="text" 
-                                placeholder='Enter Last Name' 
+                                placeholder='Enter Contact Person Name' 
                                 id="lastName" 
                                 name="lastName" 
                                 value={value.lastName} 

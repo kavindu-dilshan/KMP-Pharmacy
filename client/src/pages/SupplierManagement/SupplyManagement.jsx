@@ -41,11 +41,7 @@ export default function SupplyManagement() {
       });
   };
 
-  const formatDate = (datetimeString) => {
-    const date = new Date(datetimeString);
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-    return formattedDate;
-};
+  
 
   const generateReport = () => {
     fetch('http://localhost:3000/api/supplier/read')
@@ -62,7 +58,7 @@ export default function SupplyManagement() {
 
         const doc = new jsPDF();
 
-        const tableHeader = [['Supplier ID', 'Supplier Name', 'Last Name', 'NIC', 'Address', 'Contact No', 'Email', 'Created At']];
+        const tableHeader = [['Supplier ID', 'Supplier Name', 'Last Name', 'NIC', 'Address', 'Contact No', 'Email']];
 
         const tableData = suppliers.map(supplier => [
           supplier.supplierID,
@@ -71,8 +67,7 @@ export default function SupplyManagement() {
           supplier.NIC,
           supplier.address,
           supplier.contactNo,
-          supplier.email,
-          formatDate(supplier.createdAt)
+          supplier.email
         ]);
 
         doc.autoTable({

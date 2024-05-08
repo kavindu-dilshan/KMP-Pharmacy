@@ -5,7 +5,6 @@ const router = express.Router();
 // Sample notifications
 const notifications = [
     { id: 1, message: 'New supply request created!' },
-    { id: 2, message: 'Supplier added successfully!' },
 ];
 
 // Endpoint to fetch notifications
