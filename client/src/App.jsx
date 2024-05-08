@@ -15,7 +15,6 @@ import InventoryCreateForm from './pages/InventoryManagement/InventoryItemCreate
 import InventoryUpdateForm from './pages/InventoryManagement/InventoryUpdateForm';
 import SupplyRequestForm from './pages/InventoryManagement/SupplyRequestForm';
 import InventoryManagement from './pages/InventoryManagement/InventoryManagement';
-
 import PrescriptionCreateForm from './pages/PrescriptionManagement/PrescriptionCreateForm';
 import PrescriptionAssign from './pages/PrescriptionManagement/PrescriptionAssignPage';
 import PrescriptionManagement from './pages/PrescriptionManagement/PrescriptionManagement';
@@ -43,17 +42,18 @@ import EmployeeCreateForm from "./pages/EmployeeManagement/EmployeeCreateForm";
 import EmployeeUpdateForm from "./pages/EmployeeManagement/EmployeeUpdateForm";
 import EmploeeLoginForm from "./pages/EmployeeManagement/EmplyeeLoginForm";
 import UserPaymentDetails from './pages/UserManagement/UserPaymentDetails';
-
 import FeedbackSubmitForm from './pages/PromotionManagement/FeedbackSubmitForm';
 import FeedbackManagement from './pages/PromotionManagement/FeedbackManagement';
-
 import OrderHistory from './pages/UserManagement/OrderHistory';
-
 import Prescriptionform from './pages/PrescriptionManagement/PrescriptionForm';
-
 import DriverProfile from './pages/DeliveryManagement/DriverProfile';
 import DriverTask from './pages/DeliveryManagement/DriverTask';
-
+import EmployeeLeaveManagement from "./pages/EmployeeManagement/EmployeeLeaveManagement";
+import EmployeeLeaveCreateForm from "./pages/EmployeeManagement/EmployeeLeaveCreateForm";
+import EmployeeLeaveUpdateForm from "./pages/EmployeeManagement/EmployeeLeaveUpdateForm";
+import EmployeeSalaryManagement from "./pages/EmployeeManagement/EmployeeSalaryManagement";
+import EmployeeSalaryCreateForm from "./pages/EmployeeManagement/EmployeeSalaryCreateForm";
+import EmployeeSalaryUpdateForm from "./pages/EmployeeManagement/EmployeeSalaryUpdateForm";
 
 export default function App() {
   return (
@@ -69,8 +69,6 @@ export default function App() {
       <Route path='/update-promotion/:id' element={<PromotionUpdateForm />} />
       <Route path='/promotions' element={<PromotionPage />} />
 
-      <Route path='/prescriptionform' element={<Prescriptionform />} />
-
       <Route path="/supplier-management" element={<SupplyManagement/>} />
       <Route path="/create-supplier" element={<SupplierCreateForm/>} />
       <Route path='/update-supplier/:id' element={<SupplierUpdateForm />} />     
@@ -82,7 +80,8 @@ export default function App() {
       <Route path="/prescription-assigntable/:id" element={<PrescriptionAssignTable/>} />
       <Route path='/update-prescription/:id' element={<PrescriptionUpdateForm />} /> 
       <Route path='/prescription-assignform/:id' element={<PrescriptionAssignForm />} />
-      <Route path='/prescription-view-details/:id' element={<PrescriptionViewDetails />} /> 
+      <Route path='/prescription-view-details/:id' element={<PrescriptionViewDetails />} />
+      <Route path='/prescriptionform' element={<Prescriptionform />} />
 
       <Route path="/inventory-management" element={<InventoryManagement/>} />
       <Route path="/create-inventory" element={<InventoryCreateForm/>} />
@@ -117,6 +116,12 @@ export default function App() {
       <Route path="/create-employee" element={<EmployeeCreateForm />} />
       <Route path="/update-employee/:id" element={<EmployeeUpdateForm />} />
       <Route path='/employee-sign-in' element={<EmploeeLoginForm />} />
+      <Route path="/employee-leave-management" element={<EmployeeLeaveManagement />} />
+      <Route path="/create-leave-employee" element={<EmployeeLeaveCreateForm />} />
+      <Route path="/update-leave-employee/:id" element={<EmployeeLeaveUpdateForm />} />
+      <Route path="/employee-salary-management" element={<EmployeeSalaryManagement />} />
+      <Route path="/create-salary-employee" element={<EmployeeSalaryCreateForm />} />
+      <Route path="/update-salary-employee/:id" element={<EmployeeSalaryUpdateForm />} />
     </Routes>
   </Router>
   )

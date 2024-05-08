@@ -16,6 +16,8 @@ import taskRouter from './routes/task.route.js'
 import paymentRouter from './routes/payment.route.js'
 import supplyRequestRouter from './routes/SupplyRequest.route.js'
 import notificationRouter from './routes/notififcation.route.js'
+import employeeLeaveRouter from './routes/employeeLeave.route.js'
+import employeeSalaryRouter from './routes/employeeSalary.route.js'
 
 const app = express()
 dbCon()
@@ -44,6 +46,8 @@ app.use('/api/payment', paymentRouter)
 app.use('/api/task', taskRouter);
 app.use('/api/notification',notificationRouter);
 app.use('/api/supplyRequest', supplyRequestRouter);
+app.use('/api/employeeLeave', employeeLeaveRouter)
+app.use('/api/employeeSalary', employeeSalaryRouter)
 
 
 app.use(express.static(path.join(__dirname, '/client/dist')));

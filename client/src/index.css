@@ -26,3 +26,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(100 116 139);
 }
+
+.hide {
+    display: none;
+}
