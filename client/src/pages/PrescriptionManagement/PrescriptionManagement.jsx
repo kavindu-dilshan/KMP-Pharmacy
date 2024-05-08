@@ -46,46 +46,52 @@ export default function PrescriptionManagement() {
     return formattedDate;
 };
 
-  const generateReport = () => {
-    fetch('http://localhost:3000/api/prescription/read')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          console.error('Failed to generate report:', response.statusText);
-          throw new Error('Failed to generate report');
-        }
-      })
-      .then(data => {
-        const prescription = data.prescription;
+const generateReport = () => {
+  fetch('http://localhost:3000/api/prescription/read')
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error('Failed to generate report:', response.statusText);
+        throw new Error('Failed to generate report');
+      }
+    })
+    .then(data => {
+      const prescriptions = data.prescription;
 
-        const doc = new jsPDF();
+      const doc = new jsPDF();
 
-        const tableHeader = [['Prescription ID', 'First Name', 'Last Name', 'age', 'contactNo', 'Medication Name', 'Units', 'notes']];
+      const totalPrescriptions = prescriptions.length;
 
-        const tableData = prescription.map(prescription => [
-            prescription.PrescriptionID,
-            prescription.firstName,
-            prescription.lastName,
-            prescription.age,
-            prescription.contactNo,
-            prescription.MedicationNames,
-            prescription.units,
-            prescription.notes
-        ]);
+      // Adding counts to the report
+      doc.text(`Total Prescriptions: ${totalPrescriptions}`, 20, 20);
 
-        doc.autoTable({
-          head: tableHeader,
-          body: tableData,
-        });
+      // Adding prescription details as a table
+      const tableHeader = [['Prescription ID', 'First Name', 'Last Name', 'Age', 'Contact No', 'Medication Names', 'Units', 'Notes']];
+      const tableData = prescriptions.map(prescription => [
+        prescription.PrescriptionID,
+        prescription.firstName,
+        prescription.lastName,
+        prescription.age,
+        prescription.contactNo,
+        prescription.MedicationNames,
+        prescription.units,
+        prescription.notes
+      ]);
 
-        doc.save('Prescription Management Report.pdf');
-      })
-      .catch(error => {
-        console.error('Error generating report:', error);
+      doc.autoTable({
+        head: tableHeader,
+        body: tableData,
+        startY: 25 
       });
-  };
-  
+
+      doc.save('PrescriptionManagementReport.pdf');
+    })
+    .catch(error => {
+      console.error('Error generating report:', error);
+    });
+};
+
 
   return (
     <div className='flex'>
