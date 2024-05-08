@@ -41,51 +41,6 @@ export default function DriverManagement() {
       });
   };
 
-  const generateReport = () => {
-    fetch('http://localhost:3000/api/driver/read')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          console.error('Failed to generate report:', response.statusText);
-          throw new Error('Failed to generate report');
-        }
-      })
-      .then(data => {
-        const drivers = data.driver;
-
-        if (drivers.length === 0) {
-          toast.error('No records to generate report');
-          return;
-        }
-        const doc = new jsPDF();
-
-        const tableHeader = [['Driver ID', 'Full Name', 'Contact Number', 'License Number', 'License Validity', 'Vehicle Model', 'Vehicle License', 'Availability', 'Password']];
-
-        const tableData = drivers.map(driver => [
-          driver.driverId,
-          driver.driverName,
-          driver.contactNo,
-          driver.driverLicense,
-          driver.licenseValidity,
-          driver.vehicleModel,
-          driver.vehicleLicense,
-          driver.availabilty,
-          driver.password,
-        ]);
-
-        doc.autoTable({
-          head: tableHeader,
-          body: tableData,
-        });
-
-        doc.save('Driver Management Report.pdf');
-      })
-      .catch(error => {
-        console.error('Error generating report:', error);
-      });
-  };
-  
 
   return (
     <div className='flex'>
@@ -94,10 +49,7 @@ export default function DriverManagement() {
         <div className='bg-paleblue justify-between flex px-10 py-10'>
           <h1 className='text-4xl font-bold text-blue'>Driver Management Dashboard</h1>
           <div className='flex gap-6'>
-            <button onClick={generateReport} className="bg-white hover:bg-light-blue hover:text-white text-black border-2 border-light-blue font-semibold transition-all py-2 px-4 rounded-lg inline-flex items-center">
-              <MdDownload className='text-2xl mr-2' />
-              <span>Download Report</span>
-            </button>
+
             <div className='flex gap-2 cursor-pointer'>
             <img className='w-12 h-12 border-2 border-white rounded-full' src="https://avatars.githubusercontent.com/u/120442263?s=400&u=7520de9a5dfa3a68aa9b35c51ff4a845145e3d6d&v=4" />
             <div className="flex w-full flex-col gap-0.5">
