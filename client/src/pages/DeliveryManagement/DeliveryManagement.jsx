@@ -99,27 +99,28 @@ export default function DeliveryManagement() {
             </div>
           </div>
     </div>
+    <div className='flex-01 flex'>
     
-    <div className='w-80'>
-        <div className="flex flex-col gap-4 ml-10 mt-16">
-        
-        <Link to="/create-task" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
-          Create Task
-        </Link>
-        <Link to="/driver-create" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
-          Add Driver
-        </Link>
-        <Link to="/taskpage" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
-          Manage Tasks
-        </Link>
-        <Link to="/driver-management" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
-          Manage Drivers
-        </Link>
-      </div>
-      
-      </div>
+
+    <div className='w-2xl flex justify-center items-center'>
+        <div className="flex flex-col gap-4 ml-10  mt-10 w-80">
+            <Link to="/create-task" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
+                Create Task
+            </Link>
+            <Link to="/driver-create" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
+                Add Driver
+            </Link>
+            <Link to="/taskpage" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
+                Manage Tasks
+            </Link>
+            <Link to="/driver-management" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
+                Manage Drivers
+            </Link>
+        </div>
+    </div>
+    <img src='https://img.graphicsurf.com/2019/12/food-delivery-vector-illustration2.jpg' className='w-1/2' alt="Delivery Image" />
+</div>
     </div>
     </div>
-    
 
   )}
