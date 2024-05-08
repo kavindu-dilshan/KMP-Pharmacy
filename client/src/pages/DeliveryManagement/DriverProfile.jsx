@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import Footer from '../../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import DriveNavigationBar from '../../components/DriveNavigationBar';
-import { Link } from 'react-router-dom';
+
 
 export default function DriverProfile() {
   
