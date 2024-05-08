@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { signInSuccess } from '../redux/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 
+import { FaGoogle } from 'react-icons/fa';
+
 export default function OAuth() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

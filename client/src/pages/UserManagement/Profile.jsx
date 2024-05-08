@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux';
 import Footer from '../../components/Footer';
 import NavigationBar from '../../components/NavigationBar';
 import { Link } from 'react-router-dom';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 
 export default function Profile() {
@@ -128,8 +129,10 @@ export default function Profile() {
     <div className='bg-paleblue'>
       <NavigationBar />
     <div className='p-3 max-w-lg mx-auto' >
-      
-      <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
+    <span onClick={handleSignOut} className='text-white cursor-pointer absolute top-15 right-0 mt-2 mr-4 px-4 py-2 bg-red-700 border border-red-950 rounded-lg flex items-center'>
+    <FaSignOutAlt className='mr-2' /> Log Out
+    </span>
+      <h1 className='text-3xl font-semibold text-center my-7 text-blue'>Profile</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -203,23 +206,17 @@ export default function Profile() {
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
-        <Link
-          className='bg-light-blue  border-light-blue text-white p-3 rounded-lg uppercase text-center hover:opacity-95'
-          to={'/order-history'}
-        >
-          Order History
-        </Link>
+        <button
+        onClick={handleDeleteUser}
+        className='bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95'
+      >
+        Delete account
+      </button>
+        
       </form>
       <div className='flex justify-between mt-5'>
-        <span
-          onClick={handleDeleteUser}
-          className='text-red-700 cursor-pointer'
-        >
-          Delete account
-        </span>
-        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>
-          Sign out
-        </span>
+       
+      
       </div>
 
       <p className='text-red-700 mt-5'>{error ? error : ''}</p>
