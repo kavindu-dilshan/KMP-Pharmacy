@@ -73,7 +73,11 @@ export default function SignIn() {
         </button>   
       </form>
       </div>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
+      <div className='flex gap-2 mt-5 mb-8 ml-9'>
+        <p>Forget password?</p>
+          <span className='text-light-blue'>Please! Contact Employee manager!</span>
+      </div>
+
     </div>
     <Footer />
     </div>
