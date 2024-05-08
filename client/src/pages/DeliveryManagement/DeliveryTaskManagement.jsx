@@ -66,8 +66,9 @@ export default function DeliveryTaskManagement() {
           unit: "pt",
           format: "letter"
         });
+
   
-        const taskCount = data.task.length.toString();
+       const taskCount = data.task.length.toString();
 
   
         const margin = 40;
@@ -111,7 +112,7 @@ export default function DeliveryTaskManagement() {
         });
   
         // Counts section
-        yPos += 300;
+        yPos += 450;
         doc.setFontSize(14);
         doc.setTextColor(0, 0, 255);
         doc.text("Counts", margin, yPos);
@@ -123,7 +124,7 @@ export default function DeliveryTaskManagement() {
         yPos += 20;
         doc.text(`- To be delivered: ${notdeliveredTaskCount}`, margin, yPos);
   
-        yPos += 240;
+        yPos += 90;
         doc.setFontSize(20);
         doc.setTextColor(0, 0, 255);
         doc.text("KMP Pharmacy (PVT) LTD", margin, yPos);
