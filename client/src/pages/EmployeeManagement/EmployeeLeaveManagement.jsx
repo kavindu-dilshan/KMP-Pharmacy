@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import EmployeeTable from "./EmployeeManagementTable";
+import EmployeeLeaveTable from "./EmployeeLeaveManagementTable";
 import { Link } from "react-router-dom";
 import { MdDownload } from "react-icons/md";
 import SideBar from "../../components/SideBar";
@@ -8,7 +8,7 @@ import "jspdf-autotable";
 
 export default function EmployeeManagement() {
   const generateReport = () => {
-    fetch("http://localhost:3000/api/employee/read")
+    fetch("http://localhost:3000/api/employeeLeave/read")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -51,7 +51,7 @@ export default function EmployeeManagement() {
           body: tableData,
         });
 
-        doc.save("Employee Management Report.pdf");
+        doc.save("Employee Leave Management Report.pdf");
       })
       .catch((error) => {
         console.error("Error generating report:", error);
@@ -70,7 +70,7 @@ export default function EmployeeManagement() {
       <div className="flex-1">
         <div className="bg-paleblue justify-between flex px-10 py-8">
           <h1 className="text-4xl font-bold text-blue">
-            Employee Management Dashboard
+            Employee Leave Management Dashboard
           </h1>
           <div className="flex gap-6">
             <button
@@ -96,34 +96,22 @@ export default function EmployeeManagement() {
           </div>
         </div>
         <div className="px-10 text-2xl font-semibold pt-5">
-          <span className="">Employees</span>
+          <span className="">Leaves</span>
         </div>
 
         <div className="flex items-center ml-10 justify-between mt-7">
           <div className="flex flex-col mr-10 text-sm text-center">
             <div className="">
               <Link
-                to="/create-employee"
+                to="/create-leave-employee"
                 className="bg-green-600 text-white hover:bg-green-700 font-semibold rounded-lg  w-full p-3 m-3"
               >
-                Add Employee
-              </Link>
-              <Link
-                to="/employee-salary-management"
-                className="bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg  w-full p-3 m-3"
-              >
-                Manage Salary Assignment
-              </Link>
-              <Link
-                to="/employee-leave-management"
-                className="bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg  w-full p-3 m-3"
-              >
-                Manage Leave Request
+                Add Leave
               </Link>
             </div>
           </div>
         </div>
-        <EmployeeTable />
+        <EmployeeLeaveTable />
       </div>
     </div>
   );

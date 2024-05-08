@@ -88,9 +88,8 @@ export default function SideBar() {
       path: "/employee-management",
       submenu: true,
       submenuItems: [
-        { title: "Employee Leave Apply", path: "/employee-Leave Apply" },
-        { title: "Employee OT Recording", path: "/employee-OT Recording" },
-        { title: "Employee Salary Assign", path: "/employee-Salary Assign" },
+        { title: "Employee Leave Management", path: "/employee-leave-management" },
+        { title: "Employee Salary Management", path: "/employee-salary-management" },
       ],
     },
     { title: "Payment Management", icon: <BiDollarCircle />, path: '/user-payment' },

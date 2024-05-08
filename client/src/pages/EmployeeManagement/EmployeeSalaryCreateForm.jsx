@@ -32,14 +32,14 @@ export default function EmployeeCreateForm() {
     e.preventDefault();
     try {
       const addEmployee = await axios.post(
-        "http://localhost:3000/api/employee/create",
+        "http://localhost:3000/api/employeeSalary/create",
         value
       );
       const response = addEmployee.data;
       if (response.success) {
         toast.success(response.message, { duration: 4000 });
         setTimeout(() => {
-          navigate("/employee-management");
+          navigate("/employee-Salary-management");
         });
       }
       console.log(response);
@@ -55,7 +55,7 @@ export default function EmployeeCreateForm() {
       <div className="flex-1">
         <div className="bg-paleblue justify-between flex px-10 py-8">
           <h1 className="text-4xl font-bold text-blue">
-            Employee Registration Form
+            Employee Salary Registration Form
           </h1>
           <div className="flex gap-2">
             <img
@@ -72,7 +72,7 @@ export default function EmployeeCreateForm() {
           </div>
         </div>
         <div className="px-10 text-2xl font-semibold pt-5">
-          <span className="">Add Employee</span>
+          <span className="">Assign Salary</span>
         </div>
         <div className="p-10 bg-paleblue m-10 rounded-3xl max-w-4xl border-2 border-light-blue">
           <form
@@ -104,7 +104,7 @@ export default function EmployeeCreateForm() {
                 required
               />
 
-              <label className="font-semibold text-black">Date of Bitrh</label>
+              <label className="font-semibold text-black">Salary assigning date</label>
               <input
                 type="date"
                 id="DOB"
@@ -115,10 +115,10 @@ export default function EmployeeCreateForm() {
                 required
               />
 
-              <label className="font-semibold text-black">Description</label>
+              <label className="font-semibold text-black">Salary</label>
               <textarea
                 type="textarea"
-                placeholder="Enter description"
+                placeholder="Assign the salary"
                 id="address"
                 name="address"
                 value={value.address}
@@ -178,57 +178,7 @@ export default function EmployeeCreateForm() {
                 <option value="User Manager">User Manager</option>
               </select>
 
-              <label className="font-semibold text-black">Marital Status</label>
-              <div className="flex gap-6 flex-wrap">
-                <div className="flex gap-2">
-                  <input
-                    onChange={handleChange}
-                    checked={value.maritalStatus === "Maried"}
-                    type="checkbox"
-                    name="maritalStatus"
-                    id="Maried"
-                    className="w-5"
-                  />
-                  <span>Married</span>
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    onChange={handleChange}
-                    checked={value.maritalStatus === "Unmaried"}
-                    type="checkbox"
-                    name="maritalStatus"
-                    id="Unmaried"
-                    className="w-5"
-                  />
-                  <span>Unmarried</span>
-                </div>
-              </div>
-
-              <label className="font-semibold text-black">Gender</label>
-              <div className="flex gap-6 flex-wrap">
-                <div className="flex gap-2">
-                  <input
-                    onChange={handleChange}
-                    checked={value.gender === "Male"}
-                    type="checkbox"
-                    name="gender"
-                    id="Male"
-                    className="w-5"
-                  />
-                  <span>Male</span>
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    onChange={handleChange}
-                    checked={value.gender === "Female"}
-                    type="checkbox"
-                    name="gender"
-                    id="Female"
-                    className="w-5"
-                  />
-                  <span>Female</span>
-                </div>
-              </div>
+            
             </div>
           </form>
         </div>
