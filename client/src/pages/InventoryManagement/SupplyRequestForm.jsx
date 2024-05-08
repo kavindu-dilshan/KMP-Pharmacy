@@ -37,7 +37,6 @@ export default function SupplyRequestForm() {
                     quantity: '',
                     supplier: '',
                 });
-                // Navigate back to the dashboard
                 navigate('/inventory-management');
             }
             console.log(response);
@@ -53,7 +52,7 @@ export default function SupplyRequestForm() {
                 <div className='bg-paleblue justify-between flex px-10 py-8'>
                     <h1 className='text-4xl font-bold text-blue'>Create New Supply Request</h1>
                     <div className='flex gap-2'>
-                        <img className='w-12 h-12 border-2 border-white rounded-full' src="https://avatars.githubusercontent.com/u/165793855?v=4" alt="profile" />
+                        <img className='w-12 h-12 border-2 border-white rounded-full' src="https://avatars.githubusercontent.com/u/127751216?…00&u=f53b685eb62a23a72baeda2f44a671c04b804c86&v=4" alt="profile" />
                         <div className="flex w-full flex-col gap-0.5">
                             <div className="flex items-center justify-between font-bold">
                                 <h1>Inventory Manager</h1>
