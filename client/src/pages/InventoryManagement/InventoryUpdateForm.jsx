@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom'; // Make sure useParams is imported correctly
+import { useNavigate, useParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar';
 
 export default function InventoryUpdateForm() {
