@@ -99,9 +99,10 @@ export default function DeliveryManagement() {
             </div>
           </div>
     </div>
-    <div className='w-60'>
-        <div className="flex flex-col gap-4 ml-10 mt-20">
-  
+    
+    <div className='w-80'>
+        <div className="flex flex-col gap-4 ml-10 mt-16">
+        
         <Link to="/create-task" className="bg-blue text-white px-1 py-3 rounded-lg text-center hover:bg-dark-blue transition-all">
           Create Task
         </Link>
@@ -118,8 +119,7 @@ export default function DeliveryManagement() {
       
       </div>
     </div>
-        
-      </div>
- 
+    </div>
     
+
   )}
