@@ -22,7 +22,7 @@ const NotificationBell = () => {
                 });
             } catch (error) {
                 console.error('Error fetching notifications:', error);
-                toast.error('Failed to fetch notifications.');
+                // toast.error('Failed to fetch notifications.');
             }
         };
 

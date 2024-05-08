@@ -3,6 +3,10 @@ import { FaSearch } from 'react-icons/fa';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import SideBar from '../../components/SideBar';
+import { Link } from 'react-router-dom';
+import { MdDownload } from 'react-icons/md';
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 
 export default function Orders() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -58,12 +62,58 @@ export default function Orders() {
         setDeleteId(null);
     };
 
+    const formatDate = (datetimeString) => {
+        const date = new Date(datetimeString);
+        const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+        return formattedDate;
+    };
+
+    const generateReport = () => {
+        axios.get('http://localhost:3000/api/supplyRequest/read')
+            .then(response => {
+                if (response.status === 200) {
+                    const data = response.data;
+                    const requests = data.requests; // Ensure the correct property name
+    
+                    const doc = new jsPDF();
+    
+                    const tableHeader = [['Medicine Name', 'Quantity', 'Supplier', 'Created At']];
+    
+                    const tableData = requests.map((request) => [
+                        request.medicineName,
+                        request.quantity,
+                        request.supplier,
+                        formatDate(request.createdAt),
+                    ]);
+    
+                    doc.autoTable({
+                        head: tableHeader,
+                        body: tableData,
+                    });
+    
+                    doc.save('SupplyRequest.pdf'); // Save and download the PDF
+                } else {
+                    console.error('Unexpected response status:', response.status);
+                    throw new Error(`Failed to fetch data: ${response.status}`);
+                }
+            })
+            .catch(error => {
+                console.error('Error generating report:', error);
+                toast.error('Failed to generate report. Please try again.');
+            });
+    };
+    
+
     return (
         <div className='flex'>
             <SideBar />
             <div className='flex-1'>
                 <div className='bg-paleblue justify-between flex px-10 py-8'>
                     <h1 className='text-4xl font-bold text-blue'>Supply Orders</h1>
+<button onClick={generateReport} className="bg-white hover:bg-light-blue hover:text-white text-black border-2 border-light-blue font-semibold transition-all py-2 px-4 rounded-lg inline-flex items-center">
+              <MdDownload className='text-2xl mr-2' />
+              <span>Download Report</span>
+            </button>
                 </div>
 
                 <div>

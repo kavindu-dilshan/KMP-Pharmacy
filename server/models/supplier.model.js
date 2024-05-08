@@ -5,6 +5,7 @@ const supplierSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        match: /^SID\d{3,}$/,  //SID validation
     },
     firstName: {
         type: String,
