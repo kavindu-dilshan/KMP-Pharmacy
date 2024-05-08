@@ -74,7 +74,7 @@ export default function PrescriptionViewDetails() {
 
                         <div className='flex flex-col gap-1 flex-1'>
                         <label className='font-semibold text-black'>Medication Name</label>
-                            <input type="text" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={prescriptionData.MedicationNames} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' />
+                            <textarea type="textarea" placeholder='Enter Medication Name' id="MedicationNames" name="MedicationNames" value={prescriptionData.MedicationNames} className='border-2 border-gray outline-none rounded-md p-2 mb-4 ' />
 
 
                             <label className='font-semibold text-black'>Unites</label>

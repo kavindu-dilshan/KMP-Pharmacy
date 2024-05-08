@@ -16,14 +16,39 @@ export default function PrescriptionCreateForm() {
         units: '',
         notes: ''
     });
+const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    let updatedValue = value;
 
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setValue(prevState => ({
-            ...prevState,
-            [name]: type === 'checkbox' ? (checked ? 'Active' : 'Inactive') : value
-        }));
-    };    
+    // Validate PrescriptionID
+    if (name === 'PrescriptionID') {
+        // Check if the value does not start with 'P'
+        if (!value.startsWith('P')) {
+            toast.error('Prescription ID must start with "P"', { duration: 4000 });
+            return;
+        }
+    }
+
+    // Validate contactNo
+    if (name === 'contactNo') {
+        // Check if the value is empty or contains only numeric characters
+        if (value && !/^\d+$/.test(value)) {
+            toast.error('Contact number must contain only numeric characters', { duration: 4000 });
+            return;
+        }
+        // Check if the length exceeds 10 digits
+        if (value.length > 10) {
+            toast.error('Contact number cannot exceed 10 digits', { duration: 4000 });
+            return;
+        }
+    }
+
+    setValue(prevState => ({
+        ...prevState,
+        [name]: type === 'checkbox' ? (checked ? 'Active' : 'Inactive') : updatedValue
+    }));
+};
+   
 
     const handleSubmit = async (e) => {
     e.preventDefault();
