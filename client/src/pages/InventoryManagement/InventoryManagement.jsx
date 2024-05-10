@@ -14,6 +14,8 @@ export default function Inventorymanager() {
   const [capsulecount, setCapsuleInventoryCount] = useState(0);
   const [liquidcount, setLiquidInventoryCount] = useState(0);
   const [othercount, setOtherInventoryCount] = useState(0);
+  const [pendinginventoryCount, setpendinginventoryCount] = useState(0);
+  pendinginventoryCount
 
   const [fullPrice, setfullPrice] = useState(0);
 
@@ -45,6 +47,8 @@ export default function Inventorymanager() {
 
         const expiredInventory = inventory.filter(inventory => inventory.status === 'Expired');
         setExpiredInventoryCount(expiredInventory.length);
+        const pendinginventoryCount = inventory.filter(inventory => inventory.status === 'Pending to expire');
+        setpendinginventoryCount(pendinginventoryCount.length);
 
         const numoftablets = inventory.filter(inventory => inventory.type === 'Tablet')
         setTabletInventoryCount(numoftablets.length);
@@ -165,6 +169,9 @@ export default function Inventorymanager() {
         doc.setTextColor(0, 128, 0);
         yPos += 20;
         doc.text(`- Active Items: ${inventorySize - expiredinventoryCount}`, margin, yPos);
+        yPos += 20;
+        doc.setTextColor(255, 150, 0);
+        doc.text(`- Pending expire Items: ${pendinginventoryCount}`, margin, yPos);
   
         // Types section
         yPos += 40;

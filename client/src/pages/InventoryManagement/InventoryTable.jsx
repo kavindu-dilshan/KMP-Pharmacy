@@ -19,36 +19,36 @@ function InventoryTable() {
             const fetchInventory = await axios.get('http://localhost:3000/api/inventory/read');
             const response = fetchInventory.data;
             console.log(response);
-            const updatedInventory = response.inventory.map(item => {
-                if (new Date(item.expirAt) < new Date()) {
-                    item.status = 'Expired';
-                    axios.put(`http://localhost:3000/api/inventory/update/${item._id}`, { status: 'Expired' })
-                    .then(response => {
-                        console.log('Inventory Item is expired!', response);
-                    })
-                    .catch(error => {
-                        console.error('Error updating Inventory status:', error);
-                    }); 
-                }else{
+    
+            const updatedInventory = await Promise.all(response.inventory.map(async (item) => {
+                const currentDate = new Date();
+                const expirationDate = new Date(item.expirAt);
+    
+                if (expirationDate < new Date(currentDate.getTime() + 2 * 24 * 60 * 60 * 1000) && (expirationDate > currentDate)) {
+                    item.status = 'Pending to expire';
+                } else if (expirationDate > currentDate) {
                     item.status = 'Active';
-                    axios.put(`http://localhost:3000/api/inventory/update/${item._id}`, { status: 'Active' })
-                    .then(response => {
-                        console.log('Inventory Item is Re-active!', response);
-                    })
-                    .catch(error => {
-                        console.error('Error updating Inventory status:', error);
-                    });
-
-
+                } else {
+                    item.status = 'Expired';
                 }
+    
+                try {
+                    await axios.put(`http://localhost:3000/api/inventory/update/${item._id}`, { status: item.status });
+                    console.log(`Inventory Item is ${item.status}!`);
+                } catch (error) {
+                    console.error(`Error updating Inventory status: ${item.status}`, error);
+                }
+    
                 return item;
-            });     
+            }));
+    
             setData(response);
             setSearchResults(updatedInventory);
         } catch (error) {
-            console.log(error);
+            console.error('Error fetching inventory data:', error);
         }
     };
+    
 
     const formatDate = (datetimeString) => {
         const date = new Date(datetimeString);
@@ -138,7 +138,7 @@ function InventoryTable() {
                             <td className="border-b-2 border-b-blue px-4 py-2">{formatDate(elem.expirAt)}</td>
                             <td className="border-b-2 border-b-blue px-4 py-2">{elem.storageCondition}</td>
                             <td className="border-b-2 border-b-blue px-4 py-2">{elem.type}</td>
-                            <td className={`border-b-2 border-b-blue px-4 py-2 ${elem.status === 'Active' ? 'text-green-600' : 'text-red-600'}`}>{elem.status}</td>
+                            <td className={`border-b-2 border-b-blue px-4 py-2 ${elem.status === 'Active' ? 'text-green-600':elem.status === 'Pending to expire' ? 'text-yellow-500' :'text-red-600'}`}>{elem.status}</td>
 
                             <td className="border-b-2 border-b-blue px-4 py-2">
                                 <div className='flex text-sm px-full'>
