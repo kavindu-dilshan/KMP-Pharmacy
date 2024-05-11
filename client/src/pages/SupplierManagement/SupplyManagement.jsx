@@ -41,7 +41,11 @@ export default function SupplyManagement() {
       });
   };
 
-  
+  const formatDate = (datetimeString) => {
+    const date = new Date(datetimeString);
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    return formattedDate;
+};
 
   const generateReport = () => {
     fetch('http://localhost:3000/api/supplier/read')
@@ -112,7 +116,7 @@ export default function SupplyManagement() {
           <div className='flex  gap-2 mr-10 text-sm text-center'>
             <div className='text-2xl font-semibold pt-1 p-3 w-fit'>Suppliers({suppliersCount})</div>
             <div><Link to="/create-supplier" className='bg-green-600 text-white hover:bg-green-700 font-semibold rounded-lg inline-block w-full p-3'>Create New Supplier</Link></div>
-            <div><Link to="/orders" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>New Order</Link></div>
+            <div><Link to="/orders" className='bg-light-blue text-white hover:bg-blue transition-all font-semibold rounded-lg inline-block w-full p-3'>View Orders</Link></div>
           </div>
         </div>
         </div>
