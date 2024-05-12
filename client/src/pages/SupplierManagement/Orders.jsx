@@ -68,40 +68,73 @@ export default function Orders() {
         return formattedDate;
     };
 
-    const generateReport = () => {
-        axios.get('http://localhost:3000/api/supplyRequest/read')
-            .then(response => {
-                if (response.status === 200) {
-                    const data = response.data;
-                    const requests = data.requests; // Ensure the correct property name
-    
-                    const doc = new jsPDF();
-    
-                    const tableHeader = [['Medicine Name', 'Quantity', 'Supplier', 'Created At']];
-    
-                    const tableData = requests.map((request) => [
-                        request.medicineName,
-                        request.quantity,
-                        request.supplier,
-                        formatDate(request.createdAt),
-                    ]);
-    
-                    doc.autoTable({
-                        head: tableHeader,
-                        body: tableData,
-                    });
-    
-                    doc.save('SupplyRequest.pdf'); // Save and download the PDF
-                } else {
-                    console.error('Unexpected response status:', response.status);
-                    throw new Error(`Failed to fetch data: ${response.status}`);
-                }
-            })
-            .catch(error => {
-                console.error('Error generating report:', error);
-                toast.error('Failed to generate report. Please try again.');
-            });
-    };
+    // Function to generate the report for the Orders page
+const generateReport = () => {
+    axios.get('/api/supplyRequest/read') // Update with your actual endpoint
+        .then(response => {
+            if (response.status === 200) {
+                const data = response.data;
+                const requests = data.requests; // Ensure the correct property name
+
+                const doc = new jsPDF({
+                    orientation: "portrait",
+                    unit: "pt",
+                    format: "letter",
+                });
+
+                // Document Borders
+                const margin = 40;
+                doc.setLineWidth(1);
+                doc.setDrawColor(0, 90, 139);
+                doc.line(30, 30, 580, 30); // Top line
+                doc.line(580, 780, 580, 30); // Right line
+                doc.line(30, 780, 580, 780); // Bottom line
+                doc.line(30, 30, 30, 780); // Left line
+
+                // Title and Subheader
+                doc.setFontSize(30);
+                doc.text("Supply Request Report", margin, 80);
+
+                doc.setFontSize(15);
+                doc.setTextColor(0, 0, 255);
+                doc.text(`Total Supply Requests: ${requests.length}`, margin, 130);
+
+                // Table Header and Data
+                const tableColumns = ["Medicine Name", "Quantity", "Supplier", "Created At"];
+                const tableData = requests.map(request => [
+                    request.medicineName,
+                    request.quantity,
+                    request.supplier,
+                    formatDate(request.createdAt),
+                ]);
+
+                doc.autoTable({
+                    head: [tableColumns],
+                    body: tableData,
+                    startY: 150, // Initial Y-position for the table
+                    theme: "grid",
+                    styles: { textColor: [0, 0, 0], fontStyle: "normal", fontSize: 12 },
+                    columnStyles: {
+                        0: { fontStyle: "bold" },
+                        1: { fontStyle: "bold" },
+                        2: { fontStyle: "bold" },
+                        3: { fontStyle: "bold" },
+                    },
+                });
+
+                
+                // Save the PDF
+                doc.save('SupplyRequestReport.pdf');
+            } else {
+                console.error('Unexpected response status:', response.status);
+                throw new Error(`Failed to fetch data: ${response.status}`);
+            }
+        })
+        .catch(error => {
+            console.error('Error generating report:', error);
+            toast.error('Failed to generate report.');
+        });
+};
     
 
     return (
