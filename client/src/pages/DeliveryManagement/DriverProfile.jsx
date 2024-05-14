@@ -96,16 +96,6 @@ export default function DriverProfile() {
           <input type='text'placeholder='Vehicle License'defaultValue={currentDriver.vehicleLicense}id='vehicleLicense'className='border p-1 rounded-lg ml-2'onChange={handleChange}readOnly/>
         </div>
       
-        <div className="flex flex-row gap-5">
-          <label className='font-semibold text-black'>Vehicle Model : </label>
-          <select id="vehicleModel"defaultValue={currentDriver.vehicleModel}onChange={handleChange} className='border p-1 rounded-lg ml-2 w-56'required>
-            <option value="Bike">Bike</option>
-            <option value="Threewheel">Threewheel</option>
-            <option value="Car">Car</option>
-            <option value="Van">Van</option>
-          </select>
-        </div>
-
         <div className="flex flex-row gap-11">
           <label className='font-semibold text-black'>Availability : </label>
           <select id="availabilty" defaultValue={currentDriver.availabilty} onChange={handleChange} className='border p-1 rounded-lg ml-2 w-56'required>
